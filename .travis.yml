@@ -7,4 +7,4 @@ before_script:
   - if [ -d "./node_modules" ]; then echo "Forbidden node_modules folder found !"; exit 2; fi
   - if [ -d "./public/build" ]; then echo "Forbidden public/build folder found !"; exit 2; fi
 script:
-  - vendor/bin/phpcs --standard=PSR2 --ignore=src/Migrations src/
+  - vendor/bin/phpcs --standard=PSR2 --ignore=src/Migrations ./src/
