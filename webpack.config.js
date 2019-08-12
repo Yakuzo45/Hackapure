@@ -25,6 +25,7 @@ Encore
      */
     .addEntry('mainJs', './assets/js/main.js')
     .addEntry('searchAddress', './assets/js/searchAddressAutocompletion.js')
+    .addStyleEntry('register', './assets/scss/register.scss')
     .addStyleEntry('mainCss', './assets/scss/main.scss')
     .addStyleEntry('login', './assets/scss/login.scss')
     //.addEntry('page1', './assets/js/page1.js')
