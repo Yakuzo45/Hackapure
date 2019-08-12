@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FormProspectController extends AbstractController
 {
     /**
-     *
+     * @Route("/form/user", name="form_user")
      */
     public function new(Request $request): Response
     {
