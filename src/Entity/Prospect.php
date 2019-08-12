@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProspectRepository")
@@ -19,31 +20,57 @@ class Prospect
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Civility")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $civility;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 255,
+     *      maxMessage = "Le prénom ne peut excéder {{ limit }} caractères",
+     *      minMessage = "Le prénom doit faire au moins {{ limit }} caractère"
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 255,
+     *      maxMessage = "Le nom ne peut excéder {{ limit }} caractères",
+     *      minMessage = "Le nom doit faire au moins {{ limit }} caractère"
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 255,
+     *      maxMessage = "Le numéro de téléphone ne peut excéder {{ limit }} caractères",
+     *      minMessage = "Le numéro de téléphone doit faire au moins {{ limit }} caractères"
+     * @Assert\NotBlank
      */
     private $phone;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 255,
+     *      maxMessage = "L'adresse ne peut excéder {{ limit }} caractères",
+     *      minMessage = "L'adresse doit faire au moins {{ limit }} caractère"
      */
     private $fullAddress;
 
