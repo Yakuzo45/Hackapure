@@ -27,8 +27,8 @@ class AdminUserType extends AbstractType
                     ],
                     'multiple' => false,
                     'expanded'=>true,
-                    'label' => 'Attribuez un rôle'
-                ])
+                    'label' => 'Attribuez un rôle',
+            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent correspondre',
