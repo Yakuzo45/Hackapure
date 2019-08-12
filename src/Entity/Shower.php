@@ -26,6 +26,12 @@ class Shower
      */
     private $type;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Install", inversedBy="shower")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $install;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +57,18 @@ class Shower
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getInstall(): ?Install
+    {
+        return $this->install;
+    }
+
+    public function setInstall(?Install $install): self
+    {
+        $this->install = $install;
 
         return $this;
     }
