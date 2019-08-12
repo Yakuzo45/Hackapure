@@ -47,7 +47,7 @@ class Prospect
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=25)
      * @Assert\Length(
      *      min = 1,
      *      max = 25,
