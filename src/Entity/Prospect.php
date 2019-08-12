@@ -49,10 +49,10 @@ class Prospect
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=25)
      * @Assert\Length(
-     *      min = 10,
-     *      max = 255,
+     *      min = 1,
+     *      max = 25,
      *      maxMessage = "Le numéro de téléphone ne peut excéder {{ limit }} caractères",
      *      minMessage = "Le numéro de téléphone doit faire au moins {{ limit }} caractères"
      * )
@@ -63,6 +63,11 @@ class Prospect
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 255,
+     *      maxMessage = "L'email ne peut excéder {{ limit }} caractères",
+     *      minMessage = "L'email' doit faire au moins {{ limit }} caractères")
      */
     private $email;
 
