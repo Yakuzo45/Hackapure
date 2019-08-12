@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\AdminUser;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -19,6 +20,15 @@ class AdminUserType extends AbstractType
                 'label' => 'Votre Email :',
                 'attr' => ['placeholder' => 'Email', 'class' => 'form-control']
             ])
+            ->add('userRole', ChoiceType::class, [
+                    'choices'  => [
+                        "Commercial" => 'ROLE_USER',
+                        "Admin" => 'ROLE_ADMIN'
+                    ],
+                    'multiple' => false,
+                    'expanded'=>true,
+                    'label' => 'Attribuez un rôle'
+                ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent correspondre',

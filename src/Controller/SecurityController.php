@@ -29,8 +29,8 @@ class SecurityController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($admin);
             $em->flush();
-
-            return $this->redirectToRoute('app_login');
+            $this->addFlash('success', 'l\'utilisateur' . $admin->getEmail() . ' a bien été ajouté');
+            return $this->redirectToRoute('app_register');
         }
 
         return $this->render('Admin/register.html.twig', [

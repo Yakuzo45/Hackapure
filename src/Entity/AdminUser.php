@@ -28,6 +28,11 @@ class AdminUser implements UserInterface
     private $roles = [];
 
     /**
+     * @ORM\Column(type="array")
+     */
+    private $userRole;
+
+    /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
@@ -65,11 +70,8 @@ class AdminUser implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
+        return $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_ADMIN';
-
-        return array_unique($roles);
     }
 
     public function setRoles(array $roles): self
@@ -110,4 +112,22 @@ class AdminUser implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUserRole()
+    {
+        return $this->userRole;
+    }
+
+    /**
+     * @param mixed $userRole
+     */
+    public function setUserRole($userRole): void
+    {
+        $this->setRoles([$userRole]);
+    }
+
+
 }
