@@ -50,7 +50,7 @@ class Prospect
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
      *      min = 1,
-     *      max = 255,
+     *      max = 25,
      *      maxMessage = "Le numéro de téléphone ne peut excéder {{ limit }} caractères",
      *      minMessage = "Le numéro de téléphone doit faire au moins {{ limit }} caractères")
      * @Assert\NotBlank
