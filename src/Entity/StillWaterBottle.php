@@ -29,6 +29,11 @@ class StillWaterBottle
      */
     private $waterBrand;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Consumption", inversedBy="stillWaterBottle")
+     */
+    private $consumption;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +59,18 @@ class StillWaterBottle
     public function setWaterBrand(string $waterBrand): self
     {
         $this->waterBrand = $waterBrand;
+
+        return $this;
+    }
+
+    public function getConsumption(): ?Consumption
+    {
+        return $this->consumption;
+    }
+
+    public function setConsumption(?Consumption $consumption): self
+    {
+        $this->consumption = $consumption;
 
         return $this;
     }

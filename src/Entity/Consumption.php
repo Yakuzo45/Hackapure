@@ -39,39 +39,43 @@ class Consumption
     private $home;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\StillWaterBottle")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\StillWaterBottle", mappedBy="consumption")
      * @Assert\NotBlank(message="Champs requis")
      */
     private $stillWaterBottle;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\SparkWaterBottle")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\SparkWaterBottle", mappedBy="consumption")
      * @Assert\NotBlank(message="Champs requis")
      */
     private $sparkWaterBottle;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\WaterHeater")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\WaterHeater", mappedBy="consumption", orphanRemoval=true)
      * @Assert\NotBlank(message="Champs requis")
      */
     private $waterHeater;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Heater")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\Heater", mappedBy="consumption", orphanRemoval=true)
      * @Assert\NotBlank(message="Champs requis")
      */
     private $heater;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\HomeAppliance")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\HomeAppliance", mappedBy="consumption", orphanRemoval=true)
      * @Assert\NotBlank(message="Champs requis")
      */
     private $homeAppliance;
+
+    public function __construct()
+    {
+        $this->stillWaterBottle = new ArrayCollection();
+        $this->sparkWaterBottle = new ArrayCollection();
+        $this->waterHeater = new ArrayCollection();
+        $this->heater = new ArrayCollection();
+        $this->homeAppliance = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -114,62 +118,157 @@ class Consumption
         return $this;
     }
 
-    public function getStillWaterBottle(): ?StillWaterBottle
+    /**
+     * @return Collection|StillWaterBottle[]
+     */
+    public function getStillWaterBottle(): Collection
     {
         return $this->stillWaterBottle;
     }
 
-    public function setStillWaterBottle(?StillWaterBottle $stillWaterBottle): self
+    public function addStillWaterBottle(StillWaterBottle $stillWaterBottle): self
     {
-        $this->stillWaterBottle = $stillWaterBottle;
+        if (!$this->stillWaterBottle->contains($stillWaterBottle)) {
+            $this->stillWaterBottle[] = $stillWaterBottle;
+            $stillWaterBottle->setConsumption($this);
+        }
 
         return $this;
     }
 
-    public function getSparkWaterBottle(): ?SparkWaterBottle
+    public function removeStillWaterBottle(StillWaterBottle $stillWaterBottle): self
+    {
+        if ($this->stillWaterBottle->contains($stillWaterBottle)) {
+            $this->stillWaterBottle->removeElement($stillWaterBottle);
+            // set the owning side to null (unless already changed)
+            if ($stillWaterBottle->getConsumption() === $this) {
+                $stillWaterBottle->setConsumption(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SparkWaterBottle[]
+     */
+    public function getSparkWaterBottle(): Collection
     {
         return $this->sparkWaterBottle;
     }
 
-    public function setSparkWaterBottle(?SparkWaterBottle $sparkWaterBottle): self
+    public function addSparkWaterBottle(SparkWaterBottle $sparkWaterBottle): self
     {
-        $this->sparkWaterBottle = $sparkWaterBottle;
+        if (!$this->sparkWaterBottle->contains($sparkWaterBottle)) {
+            $this->sparkWaterBottle[] = $sparkWaterBottle;
+            $sparkWaterBottle->setConsumption($this);
+        }
 
         return $this;
     }
 
-    public function getWaterHeater(): ?WaterHeater
+    public function removeSparkWaterBottle(SparkWaterBottle $sparkWaterBottle): self
+    {
+        if ($this->sparkWaterBottle->contains($sparkWaterBottle)) {
+            $this->sparkWaterBottle->removeElement($sparkWaterBottle);
+            // set the owning side to null (unless already changed)
+            if ($sparkWaterBottle->getConsumption() === $this) {
+                $sparkWaterBottle->setConsumption(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|WaterHeater[]
+     */
+    public function getWaterHeater(): Collection
     {
         return $this->waterHeater;
     }
 
-    public function setWaterHeater(?WaterHeater $waterHeater): self
+    public function addWaterHeater(WaterHeater $waterHeater): self
     {
-        $this->waterHeater = $waterHeater;
+        if (!$this->waterHeater->contains($waterHeater)) {
+            $this->waterHeater[] = $waterHeater;
+            $waterHeater->setConsumption($this);
+        }
 
         return $this;
     }
 
-    public function getHeater(): ?Heater
+    public function removeWaterHeater(WaterHeater $waterHeater): self
+    {
+        if ($this->waterHeater->contains($waterHeater)) {
+            $this->waterHeater->removeElement($waterHeater);
+            // set the owning side to null (unless already changed)
+            if ($waterHeater->getConsumption() === $this) {
+                $waterHeater->setConsumption(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Heater[]
+     */
+    public function getHeater(): Collection
     {
         return $this->heater;
     }
 
-    public function setHeater(?Heater $heater): self
+    public function addHeater(Heater $heater): self
     {
-        $this->heater = $heater;
+        if (!$this->heater->contains($heater)) {
+            $this->heater[] = $heater;
+            $heater->setConsumption($this);
+        }
 
         return $this;
     }
 
-    public function getHomeAppliance(): ?HomeAppliance
+    public function removeHeater(Heater $heater): self
+    {
+        if ($this->heater->contains($heater)) {
+            $this->heater->removeElement($heater);
+            // set the owning side to null (unless already changed)
+            if ($heater->getConsumption() === $this) {
+                $heater->setConsumption(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|HomeAppliance[]
+     */
+    public function getHomeAppliance(): Collection
     {
         return $this->homeAppliance;
     }
 
-    public function setHomeAppliance(?HomeAppliance $homeAppliance): self
+    public function addHomeAppliance(HomeAppliance $homeAppliance): self
     {
-        $this->homeAppliance = $homeAppliance;
+        if (!$this->homeAppliance->contains($homeAppliance)) {
+            $this->homeAppliance[] = $homeAppliance;
+            $homeAppliance->setConsumption($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHomeAppliance(HomeAppliance $homeAppliance): self
+    {
+        if ($this->homeAppliance->contains($homeAppliance)) {
+            $this->homeAppliance->removeElement($homeAppliance);
+            // set the owning side to null (unless already changed)
+            if ($homeAppliance->getConsumption() === $this) {
+                $homeAppliance->setConsumption(null);
+            }
+        }
 
         return $this;
     }

@@ -29,6 +29,12 @@ class Heater
      */
     private $type;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Consumption", inversedBy="heater")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $consumption;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +60,18 @@ class Heater
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getConsumption(): ?Consumption
+    {
+        return $this->consumption;
+    }
+
+    public function setConsumption(?Consumption $consumption): self
+    {
+        $this->consumption = $consumption;
 
         return $this;
     }
