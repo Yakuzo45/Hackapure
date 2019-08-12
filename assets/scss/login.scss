@@ -28,6 +28,14 @@
   }
 }
 
+@media screen and (max-width : 800px) {
+  .aquapure {
+    width: auto;
+    height: auto;
+    margin-left: 0;
+  }
+}
+
 @media screen and (min-width:900px) and (max-width: 1100px) {
   .aquapure {
     width:700px;
