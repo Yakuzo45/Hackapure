@@ -1,24 +1,22 @@
 {% extends 'Front/layout.html.twig' %}
 {% block body %}
     {{ form_start(form) }}
-    <div class="row">
-        <div class="col-3">
+    <div class="row m-5 justify-content-center">
+        <div class="col-2">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.civility, 'Civilité') }}
             </p>
             {{ form_errors(form.civility,{'attr':{'class':'alert alert-danger'}}) }}
             {{ form_widget(form.civility, {'attr':{'class':'w-100'}}) }}
         </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
+        <div class="col-4">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.firstname, 'Prénom') }}
             </p>
             {{ form_errors(form.firstname,{'attr':{'class':'alert alert-danger'}}) }}
             {{ form_widget(form.firstname, {'attr':{'class':'w-100'}}) }}
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.lastname, 'Nom') }}
             </p>
@@ -32,14 +30,14 @@
             {{ form_errors(form.phone,{'attr':{'class':'alert alert-danger'}}) }}
             {{ form_widget(form.phone, {'attr':{'class':'w-100'}}) }}
         </div>
-        <div class="col-7">
+        <div class="col-5">
             <p class="mb-0 requiredInput">
-                {{ form_label(form.email, 'courriel') }}
+                {{ form_label(form.email, 'Courriel') }}
             </p>
             {{ form_errors(form.email,{'attr':{'class':'alert alert-danger'}}) }}
             {{ form_widget(form.email, {'attr':{'class':'w-100'}}) }}
         </div>
-        <div class="col-12">
+        <div class="col-10">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.fullAddress, 'Adresse') }}
             </p>
@@ -47,10 +45,11 @@
             {{ form_widget(form.fullAddress, {'attr':{'class':'w-100'}}) }}
         </div>
 
-    </div>
-    <div class="text-center m-4 pt-2">
 
-        <button class="btn btn-primary m-2 w-25">{{ button_label|default('Valider') }}</button>
+    </div>
+    <div class=" row justify-content-center m-4 pt-2">
+
+        <button class="btn btn-primary m-2">{{ button_label|default('Valider') }}</button>
     </div>
     {{ form_end(form) }}
 
@@ -58,7 +57,7 @@
 
 
 {% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('searchAddress') }}
-{% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('searchAddress') }}
+    {% endblock %}
