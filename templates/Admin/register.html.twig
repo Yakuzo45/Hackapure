@@ -1,43 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}{% endblock %}
+{% block title %}Log in !{% endblock %}
+
+{% block stylesheets %}{{ encore_entry_link_tags('login') }}{% endblock %}
 
 {% block body %}
-    <body>
-    <div class="container mt-5">
-        {{ form_start(form) }}
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-4">
-                {{ form_label(form.email) }}
-            </div>
-            <div class="col-12 col-sm-4">
-                {{ form_widget(form.email) }}
-            </div>
-        </div>
+    <div class="container-fluid">
         <div class="row justify-content-center pt-3">
-            <div class="col-12 col-sm-4">
-                {{ form_label(form.password.first) }}
+            <div class="col-7">
+                <p class="fa-2x text-center text-primary"><strong>Ajouter</strong></p>
             </div>
-            <div class="col-12 col-sm-4">
-                {{ form_widget(form.password.first) }}
-            </div>
-        </div>
-        <div class="row justify-content-center pt-3">
-            <div class="col-12 col-sm-4">
-                {{ form_label(form.password.second) }}
-            </div>
-            <div class="col-12 col-sm-4">
-                {{ form_widget(form.password.second) }}
+            <div class="col-7">
+                <p class="text-primary text-center community"><strong>un utilisateur</strong></p>
             </div>
         </div>
-            {{ form_end(form) }}
-        <div class="row justify-content-center mt-5">
-            <div class="col-12 text-center">
-                <p>Déjà un compte sur Wastity ?</p>
+        <div class="row justify-content-center pb-3">
+            <div class="col-4 col-lg-5">
+                <img src="{{ asset('build/images/aquapure.ico') }}" class="img-fluid aquapure" alt="logo aquapure">
+            </div>
+        </div>
+        <div class="row justify-content-center text-primary text-center">
+            <div class="col-12">
+                <p class="mission"></p>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col-12">
+                <p class="fa-1x text-primary text-center"><strong>Nouvel utilisateur</strong></p>
             </div>
         </div>
     </div>
-    </body>
-
-
+    <div class="container">
+        {{ form_start(form) }}
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-4">
+                    {{ form_label(form.email) }}
+                </div>
+                <div class="col-12 col-sm-4">
+                    {{ form_widget(form.email) }}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-4 mt-2">
+                    {{ form_label(form.password.first) }}
+                </div>
+                <div class="col-12 col-sm-4 mt-2">
+                    {{ form_widget(form.password.first) }}
+                </div>
+            </div>
+             <div class="row justify-content-center">
+                <div class="col-12 col-sm-4 mt-2">
+                    {{ form_label(form.password.second) }}
+                </div>
+                <div class="col-12 col-sm-4 mt-2">
+                    {{ form_widget(form.password.second) }}
+                </div>
+             </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="col-5 col-sm-7 offset-sm-4 col-lg-6 offset-lg-4">
+                    <button class="btn btn-primary mt-3 mb-3 connexion">{{ button_label|default('Ajouter') }}</button>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

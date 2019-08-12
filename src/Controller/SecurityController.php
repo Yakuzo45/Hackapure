@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/", name="app_register")
+     * @Route("/register", name="app_register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -37,6 +37,5 @@ class SecurityController extends AbstractController
             'admin' => $admin,
             'form' => $form->createView()
         ]);
-
     }
 }

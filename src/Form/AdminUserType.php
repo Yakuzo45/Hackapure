@@ -17,7 +17,7 @@ class AdminUserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'label' => 'Votre Email :',
-                'attr' => ['placeholder' => 'Email']
+                'attr' => ['placeholder' => 'Email', 'class' => 'form-control']
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -25,7 +25,8 @@ class AdminUserType extends AbstractType
                 'options' => ['attr' => ['class' => 'password-field', 'placeholder' => 'Mot de Passe']],
                 'required' => true,
                 'first_options' => ['label' => 'Mot de Passe'],
-                'second_options' => ['label' => 'Confirmez le mot de passe']
+                'second_options' => ['label' => 'Confirmez le mot de passe'],
+                'attr' => ['class' => 'form-control']
             ])
         ;
     }
