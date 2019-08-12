@@ -28,7 +28,7 @@ class AdminUser implements UserInterface
     private $roles = [];
 
     /**
-     * @ORM\Column(type="array")
+     * @var array
      */
     private $userRole;
 
@@ -70,8 +70,9 @@ class AdminUser implements UserInterface
      */
     public function getRoles(): array
     {
-        return $this->roles;
+        $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
+        return array_unique($roles);
     }
 
     public function setRoles(array $roles): self
