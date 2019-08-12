@@ -22,6 +22,7 @@ class UnderSinkFixtures extends Fixture
             $undersink->setAccuracy($faker->sentence(10, true));
             $undersink->setPicture($faker->image());
             $manager->persist($undersink);
+            $this->addReference('undersink_', $undersink);
         }
         $manager->flush();
     }
