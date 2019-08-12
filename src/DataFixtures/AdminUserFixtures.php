@@ -10,12 +10,22 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AdminUserFixtures extends Fixture
 {
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
+
     public function load(ObjectManager $manager)
     {
         $admin = new AdminUser();
         $admin->setEmail('admin@aquapure.fr');
         $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setPassword('$argon2id$v=19$m=65536,t=4,p=1$dWJ/YiWZBtw4rgzTPMODww$gAVW2nPz7PWOKDK8yDIHybLKVd5/toogKxKPo9YZ4w8');
+        $admin->setPassword($this->passwordEncoder->encodePassword(
+            $admin,
+            '4qu4pur3FR'
+        ));
         $manager->persist($admin);
         $manager->flush();
     }
