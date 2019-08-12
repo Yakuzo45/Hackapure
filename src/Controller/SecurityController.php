@@ -29,7 +29,7 @@ class SecurityController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($admin);
             $em->flush();
-            $this->addFlash('success', 'l\'utilisateur' . $admin->getEmail() . ' a bien été ajouté');
+            $this->addFlash('success', 'l\'utilisateur ' . $admin->getEmail() . ' a bien été ajouté');
             return $this->redirectToRoute('app_register');
         }
 
