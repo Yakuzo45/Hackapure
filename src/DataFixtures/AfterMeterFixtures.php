@@ -13,7 +13,7 @@ class AfterMeterFixtures extends Fixture
     {
         $faker = Faker\Factory::create('fr_FR');
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $aftermeter = new AfterMeter();
             $aftermeter->setMaterial($faker->word);
             $aftermeter->setDiameter($faker->randomDigit);
