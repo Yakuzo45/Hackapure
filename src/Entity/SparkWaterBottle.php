@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SparkWaterBottleRepository")
@@ -18,11 +19,13 @@ class SparkWaterBottle
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $litrePerWeek;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $waterBrand;
 

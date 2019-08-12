@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\HomeRepository")
@@ -18,21 +19,25 @@ class Home
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $adult;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $teenager;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $kid;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $child;
 

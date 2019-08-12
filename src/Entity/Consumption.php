@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ConsumptionRepository")
@@ -20,6 +21,7 @@ class Consumption
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $waterConsumption;
 
@@ -32,36 +34,42 @@ class Consumption
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Home", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $home;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\StillWaterBottle")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $stillWaterBottle;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\SparkWaterBottle")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $sparkWaterBottle;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\WaterHeater")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $waterHeater;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Heater")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $heater;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\HomeAppliance")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $homeAppliance;
 
