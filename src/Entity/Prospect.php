@@ -31,7 +31,8 @@ class Prospect
      *      min = 1,
      *      max = 255,
      *      maxMessage = "Le prénom ne peut excéder {{ limit }} caractères",
-     *      minMessage = "Le prénom doit faire au moins {{ limit }} caractère")
+     *      minMessage = "Le prénom doit faire au moins {{ limit }} caractère"
+     * )
      */
     private $firstname;
 
@@ -42,7 +43,8 @@ class Prospect
      *      min = 1,
      *      max = 255,
      *      maxMessage = "Le nom ne peut excéder {{ limit }} caractères",
-     *      minMessage = "Le nom doit faire au moins {{ limit }} caractère")
+     *      minMessage = "Le nom doit faire au moins {{ limit }} caractère"
+     * )
      */
     private $lastname;
 
@@ -52,7 +54,8 @@ class Prospect
      *      min = 10,
      *      max = 25,
      *      maxMessage = "Le numéro de téléphone ne peut excéder {{ limit }} caractères",
-     *      minMessage = "Le numéro de téléphone doit faire au moins {{ limit }} caractères")
+     *      minMessage = "Le numéro de téléphone doit faire au moins {{ limit }} caractères"
+     * )
      * @Assert\NotBlank
      */
     private $phone;
@@ -76,7 +79,8 @@ class Prospect
      *      min = 1,
      *      max = 255,
      *      maxMessage = "L'adresse ne peut excéder {{ limit }} caractères",
-     *      minMessage = "L'adresse doit faire au moins {{ limit }} caractère")
+     *      minMessage = "L'adresse doit faire au moins {{ limit }} caractère"
+     * )
      */
     private $fullAddress;
 
