@@ -25,6 +25,7 @@ Encore
      */
     .addEntry('mainJs', './assets/js/main.js')
     .addEntry('searchAddress', './assets/js/searchAddressAutocompletion.js')
+    .addEntry('submitFormProspect', './assets/js/submitProspectForm.js')
     .addStyleEntry('userAdmin', './assets/scss/userAdmin.scss')
     .addStyleEntry('register', './assets/scss/register.scss')
     .addStyleEntry('navbarAdmin', './assets/scss/adminNavbar.scss')
