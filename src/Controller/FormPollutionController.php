@@ -9,12 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PollutionController extends AbstractController
+class FormPollutionController extends AbstractController
 {
 
-    /**
-     * @Route("/pollution", name="pollution")
-     */
     public function new(Request $request): Response
     {
         $pollution = new Pollution();
@@ -28,7 +25,7 @@ class PollutionController extends AbstractController
             $this->addFlash('success', 'étape 4/4 terminée');
             return $this->redirectToRoute('pollution');
         }
-        return $this->render('Front/pollution/index.html.twig', [
+        return $this->render('Front/form/form_pollution.html.twig', [
             'form' => $form->createView(),
         ]);
     }

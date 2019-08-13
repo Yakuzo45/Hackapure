@@ -27,6 +27,9 @@ class Pollution
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank
+     * @Assert\Type(
+     *     type="integer",
+     *     message="Un nombre est attendu")
      */
     private $TDS;
 
