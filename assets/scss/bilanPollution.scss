@@ -1,0 +1,52 @@
+@import "main";
+
+.title-bilan-pollution{
+  background-color: #28a6ec;
+}
+
+.bilan-pollution{
+  border-style: solid;
+  border-width: 1px;
+}
+
+.table{
+  text-align: center;
+  border-style: solid;
+}
+
+.thead{
+  background-color: #1f5fc9;
+  color: white;
+}
+
+.button{
+  margin-top: 5em;
+}
+
+.pdf{
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.proposition{
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-pdf{
+  font-size: 70px;
+  color: #28a6ec;
+  &:hover {
+    color: #1f5fc9;
+  }
+}
+
+.btn-proposition{
+  font-size: 70px;
+  color:#28a6ec;
+  &:hover{
+    color:#1f5fc9;
+  }
+}
