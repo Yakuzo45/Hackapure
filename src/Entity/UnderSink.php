@@ -9,6 +9,22 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class UnderSink
 {
+    const MATERIALS_UNDERSINK = [
+        'Cuivre',
+        'Galva',
+        'Multicouche',
+        'PolyEthilène Réticulé',
+    ];
+
+    const DIAMETER_UNDERSINK = [
+        'ø10',
+        'ø12',
+        'ø14',
+        'ø16',
+        '3/8"',
+        '1/2',
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -22,7 +38,7 @@ class UnderSink
     private $material;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $diameter;
 

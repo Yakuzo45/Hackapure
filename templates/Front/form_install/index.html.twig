@@ -5,21 +5,55 @@
 {% block body %}
 
     <h1>Installation</h1>
-
+{{ form_start(form) }}
         <h2>Après compteur</h2>
 
+            <div class="row row-aftermeter">
+                <div class="col-12">
+                    <div class="col-10 card card-aftermeter">
+                   {{ form_row(form.aftermeter) }}
 
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
 
         <h2>Sous évier</h2>
 
+    <div class="row row-undersink">
+        <div class="col-12">
+            <div class="col-10 card card-undersink">
+                {{ form_row(form.undersink) }}
 
+
+            </div>
+        </div>
+
+
+    </div>
 
         <h2>Points d'eau</h2>
 
+    <div class="row row-bath">
+        <div class="col-12">
+            <div class="col-10 card card-bath">
+                {{ form_row(form.bath) }}
 
+
+            </div>
+
+
+        </div>
+
+
+    </div>
 
         <h2>Ressources alternatives</h2>
 
 
-
+{{ form_end(form) }}
 {% endblock %}
