@@ -2,9 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\AfterMeter;
-use App\Entity\UnderSink;
-use App\Entity\Bath;
 use App\Entity\Install;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -20,9 +17,12 @@ class InstallFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i < 10; $i++) {
             $install = new Install();
             $manager->persist($install);
-            $install->setAftermeter($this->getReference('aftermeter_'));
-            $install->setBath($this->getReference('bath_'));
-            $install->setUndersink($this->getReference('undersink_'));
+            $install->setAftermeter($this->getReference('aftermeter_' . $i));
+            $install->setBath($this->getReference('bath_' . $i));
+            $install->setUndersink($this->getReference('undersink_' . $i));
+            $this->addReference('install_' .$i, $install);
+
+
         }
         $manager->flush();
     }
@@ -35,5 +35,4 @@ class InstallFixtures extends Fixture implements DependentFixtureInterface
             BathFixtures::class
         ];
     }
-
 }

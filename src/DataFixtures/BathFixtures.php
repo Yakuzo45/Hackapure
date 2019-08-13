@@ -17,7 +17,7 @@ class BathFixtures extends Fixture
             $bath = new Bath();
             $bath->setNumber($faker->randomDigit);
             $manager->persist($bath);
-            $this->addReference('bath_', $bath);
+            $this->addReference('bath_' .$i, $bath);
         }
         $manager->flush();
     }
