@@ -2,10 +2,11 @@ require('jquery-form');
 require('jquery');
 
 let collapseOne = document.querySelector('#collapseOne');
+let headingOne = document.querySelector('#headingOne');
+let errorsOne = document.querySelector('#errorsOne');
 $(document).on('submit', 'form', function (e) {
-    // il est impératif de commencer avec cette méthode qui va empêcher le navigateur d'envoyer le formulaire lui-même
+
     e.preventDefault();
-    console.log('coucou')
     $form = $(e.target);
 
     $.ajax({
@@ -15,13 +16,17 @@ $(document).on('submit', 'form', function (e) {
         success: function (data) {
             if (data === 'success') {
                 collapseOne.classList.remove("hide","show");
+                headingOne.classList.remove("bg-success","bg-primary", "bg-danger");
+                headingOne.classList.add("bg-success");
                 collapseOne.classList.add("hide");
                 collapseTwo.classList.remove("hide","show");
                 collapseTwo.classList.add("show");
-                console.log('collapse');
+                errorsOne.classList.add("d-none");
 
             } else {
-                console.log('data pas OK')
+                headingOne.classList.remove("bg-success","bg-primary", "bg-danger");
+                headingOne.classList.add("bg-danger");
+                errorsOne.classList.remove("d-none");
             }
         },
     });

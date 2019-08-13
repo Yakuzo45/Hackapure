@@ -24,10 +24,9 @@ class FormProspectController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($prospect);
             $entityManager->flush();
-            $this->addFlash('success', 'étape 1/4 terminée');
             return $this->redirectToRoute('form_user');
         }
-        return $this->render('form_prospect/index.html.twig', [
+        return $this->render('Front/form/form_prospect.html.twig', [
             'form' => $form->createView(),
         ]);
     }

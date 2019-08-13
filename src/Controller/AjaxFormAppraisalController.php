@@ -27,13 +27,16 @@ class AjaxFormAppraisalController extends AbstractController
             [
                 'action' => $this->generateUrl($request->get('_route'))]
         )->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->persist($prospect);
-            $this->getDoctrine()->getManager()->flush();
-            return new Response('success');
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $this->getDoctrine()->getManager()->persist($prospect);
+                $this->getDoctrine()->getManager()->flush();
+                return new Response('success');
+            } else {
+                return new Response('error');
+            }
         }
-
-        return $this->render('form_prospect/index.html.twig', [
+        return $this->render('Front/form/form_prospect.html.twig', [
             'form' => $form->createView(),
         ]);
     }

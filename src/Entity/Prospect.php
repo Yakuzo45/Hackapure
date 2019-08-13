@@ -49,7 +49,7 @@ class Prospect
     /**
      * @ORM\Column(type="string", length=25)
      * @Assert\Length(
-     *      min = 1,
+     *      min = 10,
      *      max = 25,
      *      maxMessage = "Le numéro de téléphone ne peut excéder {{ limit }} caractères",
      *      minMessage = "Le numéro de téléphone doit faire au moins {{ limit }} caractères")
@@ -65,6 +65,7 @@ class Prospect
      *      max = 255,
      *      maxMessage = "L'email ne peut excéder {{ limit }} caractères",
      *      minMessage = "L'email' doit faire au moins {{ limit }} caractères")
+     * @Assert\Email(message="L'email rentré n'est pas valide")
      */
     private $email;
 

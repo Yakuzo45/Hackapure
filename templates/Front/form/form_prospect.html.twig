@@ -1,0 +1,57 @@
+
+
+    {{ form_start(form) }}
+<div class="row" id="form1">
+    <div class="col-3">
+        <p class="mb-0 requiredInput">
+            {{ form_label(form.civility, 'Civilité') }}
+        </p>
+        {{ form_errors(form.civility,{'attr':{'class':'alert alert-danger'}}) }}
+        {{ form_widget(form.civility, {'attr':{'class':'w-100'}}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <p class="mb-0 requiredInput">
+            {{ form_label(form.firstname, 'Prénom') }}
+        </p>
+        {{ form_errors(form.firstname,{'attr':{'class':'alert alert-danger'}}) }}
+        {{ form_widget(form.firstname, {'attr':{'class':'w-100'}}) }}
+    </div>
+    <div class="col-6">
+        <p class="mb-0 requiredInput">
+            {{ form_label(form.lastname, 'Nom') }}
+        </p>
+        {{ form_errors(form.lastname,{'attr':{'class':'alert alert-danger'}}) }}
+        {{ form_widget(form.lastname, {'attr':{'class':'w-100'}}) }}
+    </div>
+    <div class="col-5">
+        <p class="mb-0 requiredInput">
+            {{ form_label(form.phone, 'Téléphone') }}
+        </p>
+        {{ form_errors(form.phone,{'attr':{'class':'alert alert-danger'}}) }}
+        {{ form_widget(form.phone, {'attr':{'class':'w-100'}}) }}
+    </div>
+    <div class="col-7">
+        <p class="mb-0 requiredInput">
+            {{ form_label(form.email, 'courriel') }}
+        </p>
+        {{ form_errors(form.email,{'attr':{'class':'alert alert-danger'}}) }}
+        {{ form_widget(form.email, {'attr':{'class':'w-100'}}) }}
+    </div>
+    <div class="col-12">
+        <p class="mb-0 requiredInput">
+            {{ form_label(form.fullAddress, 'Adresse') }}
+        </p>
+        {{ form_errors(form.fullAddress,{'attr':{'class':'alert alert-danger'}}) }}
+        {{ form_widget(form.fullAddress, {'attr':{'class':'w-100'}}) }}
+    </div>
+
+</div>
+<div class="text-center m-4 pt-2">
+<div id="errorsOne" class="alert alert-danger d-none"> Votre formulaire contient des erreurs.</div>
+    <button id="submitFormProspect" class="btn btn-primary m-2 w-25">{{ button_label|default('Valider') }}</button>
+    {{ form_end(form) }}
+</div>
+
+{{ encore_entry_script_tags('searchAddress') }}
