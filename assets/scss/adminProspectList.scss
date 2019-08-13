@@ -1,0 +1,29 @@
+@import 'main';
+
+.card-header {
+  background-color: $blue;
+  color: white;
+  padding: 0.5rem;
+  h2 {
+    font-size: calc(1vw + 10px);
+  }
+}
+
+#listProspects {
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.card-body {
+  border-color: $blue;
+}
+
+.btn-primary {
+  margin-bottom: 1.5vh;
+}
+
+.buttonAdd {
+  color: white;
+}
+
+

@@ -1,0 +1,16 @@
+.row-title-admin {
+   border-bottom: 1px blue solid;
+   padding-bottom: 1vh;
+   padding-top: 1vh;
+   margin-bottom: 2vh;
+   .btn-primary {
+      width: 11vw;
+      height: 6vh;
+   }
+
+}
+
+.admin-title {
+   font-size: calc(1vw + 10px);
+   font-family: panton,helvetica,sans-serif;
+}
