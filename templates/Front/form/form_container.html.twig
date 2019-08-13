@@ -1,4 +1,9 @@
 {% extends 'Front/layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('form') }}
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="accordion" id="accordionExample">
@@ -80,4 +85,5 @@
     {{ parent() }}
     {{ encore_entry_script_tags('submitFormProspect') }}
     {{ encore_entry_script_tags('submitFormPollution') }}
+
 {% endblock %}
