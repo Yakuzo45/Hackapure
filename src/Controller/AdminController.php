@@ -19,6 +19,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     /**
+     * @Route("/admin", name="admin_index", methods={"GET"})
+     */
+    public function adminIndex()
+    {
+        return $this->render('Admin/adminHomepage.html.twig');
+    }
+
+    /**
      * @Route("/admin/userIndex", name="admin_user_index", methods={"GET"})
      */
     public function index(AdminUserRepository $adminUserRepository): Response
