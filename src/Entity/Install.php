@@ -69,12 +69,12 @@ class Install
         return $this->id;
     }
 
-    public function getIdProspect(): ?Prospect
+    public function getProspect(): ?Prospect
     {
         return $this->prospect;
     }
 
-    public function setIdProspect(Prospect $prospect): self
+    public function setProspect(Prospect $prospect): self
     {
         $this->prospect = $prospect;
 
