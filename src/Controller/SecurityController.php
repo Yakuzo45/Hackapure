@@ -16,7 +16,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/admin", name="admin_user_index", methods={"GET"})
+     * @Route("/admin/userIndex", name="admin_user_index", methods={"GET"})
      */
     public function index(AdminUserRepository $adminUserRepository): Response
     {
@@ -26,7 +26,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="admin_user_edit", methods={"GET","POST"})
+     * @Route("/admin/userIndex/{id}/edit", name="admin_user_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, AdminUser $adminUser): Response
     {
@@ -47,7 +47,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_user_delete", methods={"DELETE"})
+     * @Route("/admin/userIndex/{id}", name="admin_user_delete", methods={"DELETE"})
      */
     public function delete(Request $request, AdminUser $adminUser): Response
     {
@@ -62,7 +62,7 @@ class SecurityController extends AbstractController
     }
     /**
      * CreateAdminUser
-     * @Route("/admin/register", name="app_register")
+     * @Route("/admin/userIndex/register", name="app_register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
