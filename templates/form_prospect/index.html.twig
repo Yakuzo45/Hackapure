@@ -1,7 +1,8 @@
 {% extends 'Front/layout.html.twig' %}
 {% block body %}
     {{ form_start(form) }}
-    <div class="row">
+
+    <div class="row" id="form1">
         <div class="col-3">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.civility, 'Civilité') }}

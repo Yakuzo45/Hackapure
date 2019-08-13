@@ -1,5 +1,7 @@
 require('jquery-form');
 require('jquery');
+
+let collapseOne = document.querySelector('#collapseOne');
 $(document).on('submit', 'form', function (e) {
     // il est impératif de commencer avec cette méthode qui va empêcher le navigateur d'envoyer le formulaire lui-même
     e.preventDefault();
@@ -10,20 +12,17 @@ $(document).on('submit', 'form', function (e) {
         type: 'POST',
         url: 'createProspect',
         data: $(this).serialize(),
-
         success: function (data) {
+            if (data === 'success') {
+                collapseOne.classList.remove("hide","show");
+                collapseOne.classList.add("hide");
+                collapseTwo.classList.remove("hide","show");
+                collapseTwo.classList.add("show");
+                console.log('collapse');
 
-            //clean form
-            cleanForm($(this));
-
-            //show success message
-            $('#result').html("<div id='message'></div>");
-            $('#message').html("<h2> utilisateur créé</h2>").hide();
-            event.stopPropagation();
+            } else {
+                console.log('data pas OK')
+            }
         },
-        error: function (xhr, desc, err) {
-            alert("error");
-        }
-    })
-    return false;
+    });
 });
