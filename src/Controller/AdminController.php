@@ -63,17 +63,4 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('admin_user_index');
     }
-
-    /**
-     * List all prospects
-     * @Route("/admin/prospect/list", name="admin_prospect_list")
-     */
-    public function listProspect(Request $request): Response
-    {
-        $prospects = $this->getDoctrine()->getManager()->getRepository(Prospect::class)->findAll();
-
-        return $this->render('Admin/prospect/list.html.twig', [
-            'prospects' => $prospects
-        ]);
-    }
 }
