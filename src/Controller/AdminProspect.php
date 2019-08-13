@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 class AdminProspect extends AbstractController
 {
@@ -15,9 +16,18 @@ class AdminProspect extends AbstractController
      * List all prospects
      * @Route("/admin/prospect/list", name="admin_prospect_list")
      */
-    public function listProspect(Request $request): Response
+    public function listProspect(Request $request, PaginatorInterface $paginator): Response
     {
-        $prospects = $this->getDoctrine()->getManager()->getRepository(Prospect::class)->findAll();
+        $allProspects = $this->getDoctrine()->getManager()->getRepository(Prospect::class)->findAll();
+
+        $prospects = $paginator->paginate(
+        // Doctrine Query, not results
+            $allProspects,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            20
+        );
 
         return $this->render('Admin/prospect/list.html.twig', [
             'prospects' => $prospects
