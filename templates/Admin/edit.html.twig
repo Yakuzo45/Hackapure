@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Add user{% endblock %}
+{% block title %}Edit User{% endblock %}
 
 {% block stylesheets %}{{ encore_entry_link_tags('userAdmin') }}{% endblock %}
 
@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center pt-3 mt-5">
             <div class="col-7">
-                <p class="fa-4x text-center text-primary mt-5"><strong>Ajouter</strong></p>
+                <p class="fa-4x text-center text-primary mt-5"><strong>Modifier</strong></p>
             </div>
             <div class="col-7">
                 <p class="fa-3x text-primary text-center community mb-5"><strong>un utilisateur</strong></p>
@@ -28,22 +28,6 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-12 col-sm-4 mt-3">
-                <label class="form-label" for="inputPassword">Mot de passe</label>
-            </div>
-            <div class="col-12 col-sm-4 mt-3">
-                {{ form_widget(form.password.first) }}
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-4 mt-3">
-                <label class="form-label" for="inputSecondPassword">Confirmez le mot de passe</label>
-            </div>
-            <div class="col-12 col-sm-4 mt-3">
-                {{ form_widget(form.password.second) }}
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-4 mt-3">
                 <label class="form-label" for="inputRoles">Attribuez un rôle</label>
             </div>
             <div class="col-12 col-sm-4 mt-3">
@@ -52,11 +36,14 @@
         </div>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         <div class="col-5 col-sm-7 offset-sm-4 col-lg-6 offset-lg-4 mt-5">
-            <button class="btn btn-primary mt-3 mb-3 connexion">{{ button_label|default('Ajouter') }}</button>
+            <button class="btn btn-primary mt-3 mb-3 connexion">{{ button_label|default('Modifier') }}</button>
             <a type="button" class="btn btn-primary mt-3 mb-3 connexion" href="{{ path('admin_user_index') }}">Retour à la liste</a>
         </div>
     </div>
     {{ form_end(form) }}
+    </div>
+    <div class="btn-delete col-5 col-sm-7 offset-sm-6 col-lg-6 offset-lg-6 mt-3">
+        {{ include('Admin/_delete_form.html.twig') }}
     </div>
 
 {% endblock %}
