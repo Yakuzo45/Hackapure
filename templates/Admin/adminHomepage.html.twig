@@ -1,0 +1,57 @@
+{% extends 'Admin/layoutAdmin.html.twig' %}
+
+{% block title %} Administration - AQUAPURE {% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('adminHomepage') }}
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center pt-2">
+            <div class="col-7">
+                <p class="fa-2x text-center text-secondary"><strong>Bienvenue</strong><br>
+                    <i class="fas fa-toolbox fa-2x"></i></p>
+            </div>
+            <div class="col-7">
+                <p class="text-secondary text-center community"><strong>dans le panneau d'administration</strong></p>
+            </div>
+        </div>
+        <div class="row justify-content-center pb-3">
+            <div class="col-7 col-lg-3">
+                <img src="{{ asset('build/images/aquapure.png') }}" class="img-fluid" alt="logo aquapure">
+            </div>
+        </div>
+        <div class="row justify-content-center pb-3">
+            <div class="col">
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <a href="{{ path('admin_user_index') }}" class="col-md-5 offset-md-1">
+                <button class="btn btn-secondary mt-4 mb-3 btn-block">Voir la liste des Commercials
+                    <i class="fas fa-eye"></i>
+                </button>
+            </a>
+            <a href="{{ path('admin_prospect_list') }}" class="col-md-5">
+                <button class="btn btn-secondary mt-4 mb-3 btn-block">Voir la liste des Clients
+                    <i class="fas fa-eye"></i>
+                </button>
+            </a>
+            <a href="#" class="col-md-5 offset-md-1">
+                <button class="btn btn-secondary mt-4 mb-3 btn-block">Voir les variables de configuration
+                    <i class="fas fa-eye"></i>
+                </button>
+            </a>
+            <a href="{{ path('form') }}" class="col-md-5">
+                <button class="btn btn-primary mt-4 mb-1 btn-block">Retourner sur le Site
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </a>
+
+        </div>
+    </div>
+{% endblock %}
