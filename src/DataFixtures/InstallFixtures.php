@@ -20,6 +20,7 @@ class InstallFixtures extends Fixture implements DependentFixtureInterface
             $install->setAftermeter($this->getReference('aftermeter_' . $i));
             $install->setBath($this->getReference('bath_' . $i));
             $install->setUndersink($this->getReference('undersink_' . $i));
+            $install->setIdProspect($this->getReference('prospect_'.$i));
             $this->addReference('install_' .$i, $install);
 
 

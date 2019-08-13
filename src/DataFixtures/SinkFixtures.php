@@ -18,7 +18,7 @@ class SinkFixtures extends Fixture implements DependentFixtureInterface
             $sink = new Sink();
             $sink->setType($faker->word);
             $sink->setNumber($faker->randomDigit);
-            $manager->persist();
+            $manager->persist($sink);
             $sink->setInstall($this->getReference('install_' . $i));
         }
         $manager->flush();
