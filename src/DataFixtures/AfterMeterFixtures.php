@@ -22,7 +22,7 @@ class AfterMeterFixtures extends Fixture
             $aftermeter->setAccuracy(($faker->sentence(10, true)));
             $aftermeter->setPicture($faker->image());
             $manager->persist($aftermeter);
-            $aftermeter->setInstall($this->getReference('install_0'));
+            $this->addReference('aftermeter_', $aftermeter);
         }
         $manager->flush();
     }

@@ -20,19 +20,20 @@ class InstallFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i < 10; $i++) {
             $install = new Install();
             $manager->persist($install);
-            $this->addReference('install_', $install);
+            $install->setAftermeter($this->getReference('aftermeter_'));
+            $install->setBath($this->getReference('bath_'));
+            $install->setUndersink($this->getReference('undersink_'));
         }
         $manager->flush();
-
     }
 
     public function getDependencies()
     {
         return [
-            AfterMeter::class,
-            UnderSink::class,
-            Bath::class
-            ];
+            AfterMeterFixtures::class,
+            UnderSinkFixtures::class,
+            BathFixtures::class
+        ];
     }
 
 }
