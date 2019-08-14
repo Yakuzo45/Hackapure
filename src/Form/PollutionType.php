@@ -22,56 +22,51 @@ class PollutionType extends AbstractType
                     'placeholder' => 'PPM',
                 ]
             ])
-
             ->add('userReturn', ChoiceType::class, [
-                'choices'  => [
-                    'Dureté ressentie'=>'Dureté ressentie',
+                'choices' => [
+                    'Dureté ressentie' => 'Dureté ressentie',
                     'Très dure' => 'Très dure',
                     'Dure' => 'Dure',
                     'Moyennement dure' => 'Moyennement dure',
                     'Douce' => 'Douce',
                     'Très douce' => 'Très douce',
-
                 ],])
-
             ->add('waterTaste', ChoiceType::class, [
-                'choices'  => [
-                    'Avis sur le goût'=>'Avis sur le goût',
+                'choices' => [
+                    'Avis sur le goût' => 'Avis sur le goût',
                     'Irratrapable' => 'Irratrapable',
                     'Mauvais' => 'Mauvais',
                     'Moyen' => 'Moyen',
                     'Bon' => 'Bon',
                     'Excellent' => 'Excellent',
-
                 ],])
-
             ->add('waterOdour', ChoiceType::class, [
-                'choices'  => [
+                'choices' => [
                     "Avis sur l'odeur" => "Avis sur l'odeur",
                     'Insupportable' => 'Insupportable',
                     'Mauvaise' => 'Mauvaise',
                     'Passable' => 'Passable',
                     'Bonne' => 'Bonne',
                     'Excellente' => 'Excellente',
-
                 ],])
-
             ->add('waterQuality', ChoiceType::class, [
-                'choices'  => [
-                    'Avis sur la qualité générale'=>'Avis sur la qualité générale',
+                'choices' => [
+                    'Avis sur la qualité générale' => 'Avis sur la qualité générale',
                     'Terrible' => 'Terrible',
                     'Douteuse' => 'Douteuse',
                     'Moyenne' => 'Moyenne',
                     'Satisfaisante' => 'Satisfaisante',
                     'Irréprochable' => 'Irréprochable',
-
                 ],])
-            ->add('SpecialAnalyzes', TextareaType::class, ['required'=>false],[
-                'attr' => [
-                    'placeholder' => 'analyses particulières',
-                ]
-            ])
-        ;
+            ->add(
+                'SpecialAnalyzes',
+                TextareaType::class,
+                [
+                'required' => false,
+                    'attr' => [
+                        'placeholder' => 'analyses particulières',
+                    ]]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

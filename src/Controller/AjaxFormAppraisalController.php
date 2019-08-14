@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Pollution;
 use App\Entity\Prospect;
+use App\Form\PollutionType;
 use App\Form\ProspectType;
+use App\Repository\ProspectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +16,7 @@ class AjaxFormAppraisalController extends AbstractController
 {
 
     /**
-     * @Route("/createProspect", name="article_create", condition="request.isXmlHttpRequest()")
+     * @Route("/createProspect")
      * @param Request $request
      * @return Response
      */
@@ -31,9 +34,9 @@ class AjaxFormAppraisalController extends AbstractController
             if ($form->isValid()) {
                 $this->getDoctrine()->getManager()->persist($prospect);
                 $this->getDoctrine()->getManager()->flush();
-                return new Response('success');
+                return new Response('successProspect');
             } else {
-                return new Response('error');
+                return new Response('errorProspect');
             }
         }
         return $this->render('Front/form/form_prospect.html.twig', [
@@ -41,29 +44,33 @@ class AjaxFormAppraisalController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/createPollution")
+     * @param Request $request
+     * @return Response
+     */
+    public function createPollution(Request $request, ProspectRepository $prospectRepository)
+    {
+        $pollution = new Pollution();
+
+        $form = $this->createForm(
+            PollutionType::class,
+            $pollution,
+            [
+                'action' => $this->generateUrl($request->get('_route'))]
+        )->handleRequest($request);
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $pollution->setIdProspect($prospectRepository->findOneByLastInsert()->getId());
+                $this->getDoctrine()->getManager()->persist($pollution);
+                $this->getDoctrine()->getManager()->flush();
+                return new Response('successPollution');
+            } else {
+                return new Response('errorPollution');
+            }
+        }
+        return $this->render('Front/form/form_pollution.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }
-//    /**
-//     * @Route("/ajax/form/appraisal", name="ajax_form_appraisal", condition="request.isXmlHttpRequest")
-//     */
-//    public function submitProspect($request)
-//    {
-//        $prospect = new Prospect();
-//        return $this->render('form_prospect/index.html.twig');
-//    }
-//}
-////        $form = $this->createForm(ProspectType::class, $prospect);
-////        $form->handleRequest($request);
-////
-////        if ($form->isSubmitted() && $form->isValid()) {
-////            $entityManager = $this->getDoctrine()->getManager();
-////            $entityManager->persist($prospect);
-////            $entityManager->flush();
-////            $this->addFlash('success', 'étape 1/4 terminée');
-////            return new Response('success');
-////        }
-//        return $this->render('form_prospect/index.html.twig');
-////            [
-////            'form' => $form->createView(),
-////        ]);
-//    }
-//}
