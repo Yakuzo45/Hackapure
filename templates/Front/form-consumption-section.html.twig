@@ -1,2 +1,23 @@
-{% extends 'layout.html.twig' %}
+{% extends 'Front/layout.html.twig' %}
 
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_widget(form.waterConsumption) }}
+        {{ form_row(form.stillWater) }}
+        {{ form_widget(form.stillWaterBottle.vars.prototype.literPerWeek) }}
+        {{ form_widget(form.stillWaterBottle.vars.prototype.waterBrand) }}
+        {{ form_row(form.sparkWater) }}
+        {{ form_widget(form.home) }}
+        {{ form_widget(form.sparkWaterBottle.vars.prototype.literPerWeek) }}
+        {{ form_widget(form.sparkWaterBottle.vars.prototype.waterBrand) }}
+        {{ form_widget(form.waterHeater.vars.prototype.number) }}
+        {{ form_widget(form.waterHeater.vars.prototype.type) }}
+        {{ form_widget(form.heater.vars.prototype.number) }}
+        {{ form_widget(form.heater.vars.prototype.type) }}
+        {{ form_widget(form.homeAppliance.vars.prototype.number) }}
+        {{ form_widget(form.homeAppliance.vars.prototype.type) }}
+        <input type="submit" value="Submit">
+    {{ form_end(form) }}
+
+
+{% endblock %}

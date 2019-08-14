@@ -10,6 +10,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class SparkWaterBottle
 {
+    const BRANDSPARKWATER = [
+        'St. Yorre' => 'yorre',
+        'Perrier' => 'perrier',
+        'Badoit' => 'badoit',
+        'San Pellegrino' => 'pellegrino'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -21,7 +28,7 @@ class SparkWaterBottle
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Champs requis")
      */
-    private $litrePerWeek;
+    private $literPerWeek;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,14 +46,14 @@ class SparkWaterBottle
         return $this->id;
     }
 
-    public function getLitrePerWeek(): ?int
+    public function getLiterPerWeek(): ?int
     {
-        return $this->litrePerWeek;
+        return $this->literPerWeek;
     }
 
-    public function setLitrePerWeek(int $litrePerWeek): self
+    public function setLiterPerWeek(int $literPerWeek): self
     {
-        $this->litrePerWeek = $litrePerWeek;
+        $this->literPerWeek = $literPerWeek;
 
         return $this;
     }

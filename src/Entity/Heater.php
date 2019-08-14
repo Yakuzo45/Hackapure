@@ -10,6 +10,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Heater
 {
+    const HEATER_TYPES = [
+        'Électrique' => 'electric',
+        'Chaudière Fuel' => 'fuel',
+        'Chaudière Gaz' => 'gas',
+        'Pompe à Chaleur'=> 'heat pump'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
