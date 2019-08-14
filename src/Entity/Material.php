@@ -28,9 +28,21 @@ class Material
      */
     private $diameters;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\AfterMeter", mappedBy="material")
+     */
+    private $afterMeters;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UnderSink", mappedBy="material")
+     */
+    private $underSinks;
+
     public function __construct()
     {
         $this->diameters = new ArrayCollection();
+        $this->afterMeters = new ArrayCollection();
+        $this->underSinks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +87,68 @@ class Material
             // set the owning side to null (unless already changed)
             if ($diameter->getMaterial() === $this) {
                 $diameter->setMaterial(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AfterMeter[]
+     */
+    public function getAfterMeters(): Collection
+    {
+        return $this->afterMeters;
+    }
+
+    public function addAfterMeter(AfterMeter $afterMeter): self
+    {
+        if (!$this->afterMeters->contains($afterMeter)) {
+            $this->afterMeters[] = $afterMeter;
+            $afterMeter->setMaterial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAfterMeter(AfterMeter $afterMeter): self
+    {
+        if ($this->afterMeters->contains($afterMeter)) {
+            $this->afterMeters->removeElement($afterMeter);
+            // set the owning side to null (unless already changed)
+            if ($afterMeter->getMaterial() === $this) {
+                $afterMeter->setMaterial(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|UnderSink[]
+     */
+    public function getUnderSinks(): Collection
+    {
+        return $this->underSinks;
+    }
+
+    public function addUnderSink(UnderSink $underSink): self
+    {
+        if (!$this->underSinks->contains($underSink)) {
+            $this->underSinks[] = $underSink;
+            $underSink->setMaterial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUnderSink(UnderSink $underSink): self
+    {
+        if ($this->underSinks->contains($underSink)) {
+            $this->underSinks->removeElement($underSink);
+            // set the owning side to null (unless already changed)
+            if ($underSink->getMaterial() === $this) {
+                $underSink->setMaterial(null);
             }
         }
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\AfterMeter;
 use App\Form\InstallFormType;
+use App\Repository\ProspectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Install;
@@ -15,15 +16,20 @@ class FormInstallController extends AbstractController
     /**
      * @Route("/form/install", name="form_install", methods={"GET", "POST"})
      */
-    public function new(Request $request) : Response
+    public function new(Request $request, ProspectRepository $prospectRepository) : Response
     {
         $install = new Install();
         $form = $this->createForm(InstallFormType::class, $install);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($form->getData());
-//            $afterMeter = $this->setAfterMeter($form->getData()->getAfterMeter());
-//            $install->setAftermeter($afterMeter);
+            $sink = $install->getSink();
+            $shower = $install->getShower();
+            $privy = $install->getPrivy();
+            $sink['__name__']->setInstall($install);
+            $shower['__name__']->setInstall($install);
+            $privy['__name__']->setInstall($install);
+            $prospect = $prospectRepository->findOneByLastInsert();
+            $install->setProspect($prospect);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($install);
             $entityManager->flush();

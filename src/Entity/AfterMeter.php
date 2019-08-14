@@ -16,15 +16,6 @@ class AfterMeter
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $material;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $diameter;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -46,33 +37,21 @@ class AfterMeter
      */
     private $picture;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Material", inversedBy="afterMeters")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $material;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Diameter", inversedBy="afterMeters")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $diameter;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getMaterial(): ?string
-    {
-        return $this->material;
-    }
-
-    public function setMaterial(string $material): self
-    {
-        $this->material = $material;
-
-        return $this;
-    }
-
-    public function getDiameter(): ?int
-    {
-        return $this->diameter;
-    }
-
-    public function setDiameter(int $diameter): self
-    {
-        $this->diameter = $diameter;
-
-        return $this;
     }
 
     public function getScrewthread(): ?string
@@ -119,6 +98,30 @@ class AfterMeter
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getMaterial(): ?Material
+    {
+        return $this->material;
+    }
+
+    public function setMaterial(?Material $material): self
+    {
+        $this->material = $material;
+
+        return $this;
+    }
+
+    public function getDiameter(): ?Diameter
+    {
+        return $this->diameter;
+    }
+
+    public function setDiameter(?Diameter $diameter): self
+    {
+        $this->diameter = $diameter;
 
         return $this;
     }

@@ -31,17 +31,17 @@ class Install
     private $bath;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Sink", mappedBy="id_install")
+     * @ORM\OneToMany(targetEntity="App\Entity\Sink", mappedBy="id_install", cascade={"persist"})
      */
     private $sink;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Shower", mappedBy="id_install")
+     * @ORM\OneToMany(targetEntity="App\Entity\Shower", mappedBy="id_install", cascade={"persist"})
      */
     private $shower;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Privy", mappedBy="id_install")
+     * @ORM\OneToMany(targetEntity="App\Entity\Privy", mappedBy="id_install", cascade={"persist"})
      */
     private $privy;
 
