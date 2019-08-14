@@ -1,6 +1,4 @@
-
-
-    {{ form_start(form) }}
+{{ form_start(form,{'attr': {'id': 'formProspect'}}) }}
 <div class="row" id="form1">
     <div class="col-3">
         <p class="mb-0 requiredInput">
@@ -46,10 +44,9 @@
         {{ form_errors(form.fullAddress,{'attr':{'class':'alert alert-danger'}}) }}
         {{ form_widget(form.fullAddress, {'attr':{'class':'w-100'}}) }}
     </div>
-
 </div>
 <div class="text-center m-4 pt-2">
-<div id="errorsOne" class="alert alert-danger d-none"> Votre formulaire contient des erreurs.</div>
+    <div id="errorsOne" class="alert alert-danger d-none"> Votre formulaire contient des erreurs.</div>
     <button id="submitFormProspect" class="btn btn-primary m-2 w-25">{{ button_label|default('Valider') }}</button>
     {{ form_end(form) }}
 </div>

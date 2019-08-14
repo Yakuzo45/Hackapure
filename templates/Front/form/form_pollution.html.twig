@@ -1,9 +1,6 @@
-{% extends 'Front/layout.html.twig' %}
+<div class="container">
 
-{% block body %}
-    <div class ="container">
-<h1>Pollution</h1>
-    {{ form_start(form) }}
+    {{ form_start(form,{'attr': {'id': 'formPollution'}}) }}
     <H2>Evaluation Calcaire</H2>
     <div class="row">
         <div class="col-4">
@@ -24,7 +21,7 @@
         </div>
     </div>
     <H2>Retour de l'Usager</H2>
-    <div class = "row">
+    <div class="row">
         <div class="col-4">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.waterTaste, "Goût de l'eau au robinet") }}
@@ -47,17 +44,15 @@
             {{ form_widget(form.waterQuality, {'attr':{'class':'w-100'}}) }}
         </div>
     </div>
-        <div class ="analyses mt-4">
+    <div class="analyses mt-4">
         <h2>Analyses Particulières</h2>
         {{ form_errors(form.SpecialAnalyzes,{'attr':{'class':'alert alert-danger'}}) }}
         {{ form_widget(form.SpecialAnalyzes, {'attr':{'class':'w-100'}}) }}
-        </div>
+    </div>
 
     <div class="text-center m-4 pt-2">
-
+        <div id="errorsFour" class="alert alert-danger d-none"> Votre formulaire contient des erreurs.</div>
         <button class="btn btn-primary m-2 w-25">{{ button_label|default('Valider') }}</button>
     </div>
     {{ form_end(form) }}
-    </div>
-
-{% endblock %}
+</div>
