@@ -1,0 +1,58 @@
+<div class="container">
+
+    {{ form_start(form,{'attr': {'id': 'formPollution'}}) }}
+    <h2>Evaluation Calcaire</h2>
+    <div class="row">
+        <div class="col-4 mt-2">
+            <p class="mb-0 requiredInput">
+                {{ form_label(form.TDS, 'TDS relevé') }}
+            </p>
+            {{ form_errors(form.TDS,{'attr':{'class':'alert alert-danger'}}) }}
+            {{ form_widget(form.TDS, {'attr':{'class':'w-100'}}) }}
+        </div>
+
+        <div class="col-8 mt-2">
+            <p class="mb-0 requiredInput">
+                {{ form_label(form.userReturn, "Ressenti du calcaire") }}
+            </p>
+            {{ form_errors(form.userReturn,{'attr':{'class':'alert alert-danger'}}) }}
+            {{ form_widget(form.userReturn, {'attr':{'class':'w-100'}}) }}
+
+        </div>
+    </div>
+    <h2 class ="mt-4">Retour de l'Usager</h2>
+    <div class="row">
+        <div class="col-4 mt-2">
+            <p class="mb-0 requiredInput">
+                {{ form_label(form.waterTaste, "Goût de l'eau au robinet") }}
+            </p>
+            {{ form_errors(form.waterTaste,{'attr':{'class':'alert alert-danger'}}) }}
+            {{ form_widget(form.waterTaste, {'attr':{'class':'w-100'}}) }}
+        </div>
+        <div class="col-4 mt-2">
+            <p class="mb-0 requiredInput">
+                {{ form_label(form.waterOdour, "Odeur de l'eau au robinet") }}
+            </p>
+            {{ form_errors(form.waterOdour,{'attr':{'class':'alert alert-danger'}}) }}
+            {{ form_widget(form.waterOdour, {'attr':{'class':'w-100'}}) }}
+        </div>
+        <div class="col-4 mt-2">
+            <p class="mb-0 requiredInput">
+                {{ form_label(form.waterQuality, "Qualité de l'eau au robinet") }}
+            </p>
+            {{ form_errors(form.waterQuality,{'attr':{'class':'alert alert-danger'}}) }}
+            {{ form_widget(form.waterQuality, {'attr':{'class':'w-100'}}) }}
+        </div>
+    </div>
+    <div class="analyses mt-4">
+        <h2 class ="mb-4">Analyses Particulières</h2>
+        {{ form_errors(form.SpecialAnalyzes,{'attr':{'class':'alert alert-danger'}}) }}
+        {{ form_widget(form.SpecialAnalyzes, {'attr':{'class':'w-100'}}) }}
+    </div>
+
+    <div class="text-center m-4 pt-2">
+        <div id="errorsFour" class="alert alert-danger d-none"> Votre formulaire contient des erreurs.</div>
+        <button class="btn btn-primary m-2 w-25">{{ button_label|default('Valider') }}</button>
+    </div>
+    {{ form_end(form) }}
+</div>

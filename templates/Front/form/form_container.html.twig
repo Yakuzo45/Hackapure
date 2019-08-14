@@ -1,0 +1,93 @@
+{% extends 'Front/layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('form') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="accordion" id="accordionExample">
+            <!--collapse one-->
+            <div class="bg-primary" id="headingOne">
+                <h2 class="mb-0">
+                    <button class=" w-100 btn btn-link text-left text-white" type="button" data-toggle="collapse"
+                            data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                        Bénéficiaire
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show p-3 border rounded" aria-labelledby="headingOne"
+                 data-parent="#accordionExample">
+                {% if prospect is defined %}
+                    {{ render(controller(
+                        'App\\Controller\\FormProspectController::edit', {'id': prospect.id})) }}
+                {% else %}
+                    {{ render(controller(
+                        'App\\Controller\\FormProspectController::new')) }}
+                {% endif %}
+            </div>
+
+            <!-- collapse two-->
+            <div class="bg-primary" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class=" w-100 btn btn-link text-left text-white" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo"
+                            aria-expanded="true" aria-controls="collapseTwo">
+                        Installation
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse hide p-3 border rounded" aria-labelledby="headingTwo"
+                 data-parent="#accordionExample">
+                controller new install
+            </div>
+
+
+            <!-- collapse three-->
+            <div class="bg-primary" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="w-100 btn btn-link text-left text-white" type="button" data-toggle="collapse"
+                            data-target="#collapseThree"
+                            aria-expanded="true" aria-controls="collapseThree">
+                        Consommation
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseThree" class="collapse hide" aria-labelledby="headingThree"
+                 data-parent="#accordionExample">
+                controller new consumation
+            </div>
+
+            <!-- collapse four-->
+
+            <div class="bg-primary" id="headingFour">
+                <h2 class="mb-0">
+                    <button class=" w-100 btn btn-link text-left text-white" type="button" data-toggle="collapse"
+                            data-target="#collapseFour"
+                            aria-expanded="true" aria-controls="collapseFour">
+                        Pollution
+                    </button>
+                </h2>
+            </div>
+            <!-- End collapse four-->
+
+            <div id="collapseFour" class="collapse hide p-3 border rounded" aria-labelledby="headingFour"
+                 data-parent="#accordionExample">
+                {{ render(controller(
+                    'App\\Controller\\FormPollutionController::new')) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    {{ parent() }}
+    {{ encore_entry_script_tags('submitFormProspect') }}
+    {{ encore_entry_script_tags('submitFormPollution') }}
+
+{% endblock %}

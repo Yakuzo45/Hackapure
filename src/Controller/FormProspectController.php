@@ -11,9 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FormProspectController extends AbstractController
 {
-    /**
-     *
-     */
+
     public function new(Request $request): Response
     {
         $prospect = new Prospect();
@@ -24,10 +22,26 @@ class FormProspectController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($prospect);
             $entityManager->flush();
-            $this->addFlash('success', 'étape 1/4 terminée');
             return $this->redirectToRoute('form_user');
         }
-        return $this->render('form_prospect/index.html.twig', [
+        return $this->render('Front/form/form_prospect.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    public function edit(Prospect $prospect, Request $request): Response
+    {
+        $form = $this->createForm(ProspectType::class, $prospect);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($prospect);
+            $entityManager->flush();
+            return $this->redirectToRoute('form_edit');
+        }
+        return $this->render('Front/form/form_prospect.html.twig', [
             'form' => $form->createView(),
         ]);
     }
