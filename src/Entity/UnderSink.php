@@ -13,7 +13,7 @@ class UnderSink
         'Cuivre',
         'Galva',
         'Multicouche',
-        'PolyEthilène Réticulé',
+        'PolyEthylène Réticulé',
     ];
 
     const DIAMETER_UNDERSINK = [

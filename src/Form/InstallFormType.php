@@ -10,15 +10,21 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class InstallFormType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $aftermeterMaterials = array_flip(AfterMeter::MATERIALS_AFTERMETERS);
+        $aftermeterDiameters = array_flip(AfterMeter::DIAMERTER_AFTERMETER);
+        $undersinkMaterials = array_flip(UnderSink::MATERIALS_UNDERSINK);
+        $undersinkDiameters = array_flip(UnderSink::DIAMETER_UNDERSINK);
+
+
         $builder
             ->add(
                 $builder->create('aftermeter', FormType::class, [
@@ -26,18 +32,12 @@ class InstallFormType extends AbstractType
                     'label' => false,
                 ])
                     ->add('material', ChoiceType::class, [
-                        'choices' => [
-                            'cuivre' => 'Cuivre',
-                            'galva' => 'Galva',
-                            'multicouche' => 'Multicouche',
-                            'polyéthylène' => 'Polyéthylène',
-                            'polyéthylène réticulé' => 'Polyéthylène Réticulé',
-                            'pvc pression' => 'PVC Pression'
-                        ],
+                        'choices' => $aftermeterMaterials,
                         'label' => 'Matériel',
                     ])
-                    ->add('diameter', TextType::class, [
+                    ->add('diameter', ChoiceType::class, [
                         'label' => 'Diamètre',
+                        'choices' => $aftermeterDiameters
                     ])
                     ->add('screwthread', ChoiceType::class, [
                         'choices' => [
@@ -71,16 +71,12 @@ class InstallFormType extends AbstractType
                     'label' => false
                 ])
                     ->add('material', ChoiceType::class, [
-                        'choices' => [
-                            'cuivre' => 'Cuivre',
-                            'galva' => 'Galva',
-                            'multicouche' => 'Multicouche',
-                            'polyéthylène réticulé' => 'Polyéthylène Réticulé',
-                        ],
+                        'choices' => $undersinkMaterials,
                         'label' => 'Matériel',
                     ])
-                    ->add('diameter', TextType::class, [
+                    ->add('diameter', ChoiceType::class, [
                         'label' => 'Diamètre',
+                        'choices' => $undersinkDiameters,
                     ])
                     ->add('screwthread', ChoiceType::class, [
                         'choices' => [
@@ -110,7 +106,7 @@ class InstallFormType extends AbstractType
                     'by_reference' => UnderSink::class,
                     'label' => false
                 ])
-                    ->add('privy', IntegerType::class, [
+                    ->add('privy_number', IntegerType::class, [
                         'label' => 'WC',
                     ])
                     ->add('privy', ChoiceType::class, [
@@ -123,7 +119,7 @@ class InstallFormType extends AbstractType
 //                    ->add('privy', VichImageType::class, [
 //                        'label' => 'Photo'
 //                    ])
-                    ->add('sink', IntegerType::class, [
+                    ->add('sink_number', IntegerType::class, [
                         'label' => 'Lavabo',
                     ])
                     ->add('sink', ChoiceType::class, [
@@ -142,7 +138,7 @@ class InstallFormType extends AbstractType
 //                    ->add('bath', VichImageType::class, [
 //                        'label' => 'Photo'
 //                    ])
-                    ->add('shower', IntegerType::class, [
+                    ->add('shower_number', IntegerType::class, [
                         'label' => 'Douche',
                     ])
                     ->add('shower', ChoiceType::class, [

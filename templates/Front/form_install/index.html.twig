@@ -3,26 +3,27 @@
 {% block title %}Hello FormInstallController!{% endblock %}
 
 {% block body %}
+<div class = container>
 
     <h1>Installation</h1>
-{{ form_start(form) }}
-        <h2>Après compteur</h2>
+    {{ form_start(form) }}
+    <h2>Après compteur</h2>
 
-            <div class="row row-aftermeter">
-                <div class="col-12">
-                    <div class="col-10 card card-aftermeter">
-                   {{ form_row(form.aftermeter) }}
-
-
-                    </div>
-
-
-                </div>
+    <div class="row row-aftermeter">
+        <div class="col-12">
+            <div class="col-10 card card-aftermeter">
+                {{ form_row(form.aftermeter) }}
 
 
             </div>
 
-        <h2>Sous évier</h2>
+
+        </div>
+
+
+    </div>
+
+    <h2>Sous évier</h2>
 
     <div class="row row-undersink">
         <div class="col-12">
@@ -36,7 +37,7 @@
 
     </div>
 
-        <h2>Points d'eau</h2>
+    <h2>Points d'eau</h2>
 
     <div class="row row-bath">
         <div class="col-12">
@@ -52,8 +53,11 @@
 
     </div>
 
-        <h2>Ressources alternatives</h2>
+    <h2>Ressources alternatives</h2>
 
 
-{{ form_end(form) }}
+    {{ form_end(form) }}
+
+</div>
+
 {% endblock %}

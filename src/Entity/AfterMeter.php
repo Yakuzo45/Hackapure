@@ -13,8 +13,8 @@ class AfterMeter
         'Cuivre',
         'Galva',
         'Multicouche',
-        'PolyEthilène',
-        'PolyEthilène Réticulé',
+        'PolyEthylène',
+        'PolyEthylène Réticulé',
         'PVC Pression'
     ];
 
