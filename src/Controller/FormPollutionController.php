@@ -39,11 +39,11 @@ class FormPollutionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="pollution_quotation", methods={"GET"})
+     * @Route("/{id}", name="pollution_bilan", methods={"GET"})
      */
     public function show(Pollution $pollution): Response
     {
-        return $this->render('Front/pollution/quotation.html.twig', [
+        return $this->render('Front/pollution/bilan.html.twig', [
             'pollution' => $pollution,
         ]);
     }

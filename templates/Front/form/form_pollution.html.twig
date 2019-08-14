@@ -1,9 +1,9 @@
 <div class="container">
 
     {{ form_start(form,{'attr': {'id': 'formPollution'}}) }}
-    <H2>Evaluation Calcaire</H2>
+    <h2>Evaluation Calcaire</h2>
     <div class="row">
-        <div class="col-4">
+        <div class="col-4 mt-2">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.TDS, 'TDS relevé') }}
             </p>
@@ -11,7 +11,7 @@
             {{ form_widget(form.TDS, {'attr':{'class':'w-100'}}) }}
         </div>
 
-        <div class="col-8">
+        <div class="col-8 mt-2">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.userReturn, "Ressenti du calcaire") }}
             </p>
@@ -20,23 +20,23 @@
 
         </div>
     </div>
-    <H2>Retour de l'Usager</H2>
+    <h2 class ="mt-4">Retour de l'Usager</h2>
     <div class="row">
-        <div class="col-4">
+        <div class="col-4 mt-2">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.waterTaste, "Goût de l'eau au robinet") }}
             </p>
             {{ form_errors(form.waterTaste,{'attr':{'class':'alert alert-danger'}}) }}
             {{ form_widget(form.waterTaste, {'attr':{'class':'w-100'}}) }}
         </div>
-        <div class="col-4">
+        <div class="col-4 mt-2">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.waterOdour, "Odeur de l'eau au robinet") }}
             </p>
             {{ form_errors(form.waterOdour,{'attr':{'class':'alert alert-danger'}}) }}
             {{ form_widget(form.waterOdour, {'attr':{'class':'w-100'}}) }}
         </div>
-        <div class="col-4">
+        <div class="col-4 mt-2">
             <p class="mb-0 requiredInput">
                 {{ form_label(form.waterQuality, "Qualité de l'eau au robinet") }}
             </p>
@@ -45,7 +45,7 @@
         </div>
     </div>
     <div class="analyses mt-4">
-        <h2>Analyses Particulières</h2>
+        <h2 class ="mb-4">Analyses Particulières</h2>
         {{ form_errors(form.SpecialAnalyzes,{'attr':{'class':'alert alert-danger'}}) }}
         {{ form_widget(form.SpecialAnalyzes, {'attr':{'class':'w-100'}}) }}
     </div>
