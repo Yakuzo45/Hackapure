@@ -25,7 +25,15 @@ Encore
      */
     .addEntry('mainJs', './assets/js/main.js')
     .addEntry('searchAddress', './assets/js/searchAddressAutocompletion.js')
-    .addStyleEntry('mainCss', './assets/scss/main.scss')
+    .addEntry('submitFormProspect', './assets/js/submitProspectForm.js')
+    .addEntry('submitFormPollution', './assets/js/submitPollutionForm.js')
+    .addStyleEntry('userAdmin', './assets/scss/userAdmin.scss')
+    .addStyleEntry('navbarAdmin', './assets/scss/adminNavbar.scss')
+    .addStyleEntry('login', './assets/scss/login.scss')
+    .addStyleEntry('bilanPollution','./assets/scss/bilanPollution.scss')
+    .addStyleEntry('listProspect', './assets/scss/adminProspectList.scss')
+    .addStyleEntry('form', './assets/scss/form.scss')
+    .addStyleEntry('adminHomepage', './assets/scss/adminHomepage.scss')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

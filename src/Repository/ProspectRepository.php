@@ -19,32 +19,13 @@ class ProspectRepository extends ServiceEntityRepository
         parent::__construct($registry, Prospect::class);
     }
 
-    // /**
-    //  * @return Prospect[] Returns an array of Prospect objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findOneByLastInsert(): ?Prospect
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Prospect
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
 }

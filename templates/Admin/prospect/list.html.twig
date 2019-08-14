@@ -1,0 +1,63 @@
+{% extends 'Admin/layoutAdmin.html.twig' %}
+
+{% block title %}
+    Listing des Client - AQUAPURE
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('listProspect') }}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <section id="listProspects">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2>Listing de tous les Clients</h2>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-primary" href="{{ path('form') }}"><i class="fas fa-user-plus buttonAdd"></i></a>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Modifier</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% if prospects|length == 0 %}
+                            <tr>
+                                <th colspan="7" class="text-center"><i class="fas fa-exclamation-triangle"></i>  Il n'y a pas d'entrée pour cette table  <i class="fas fa-exclamation-triangle"></i></th>
+                            </tr>
+                        {% else %}
+                            {% for prospect in prospects %}
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ prospect.firstname }}</td>
+                                    <td>{{ prospect.lastname }}</td>
+                                    <td>{{ prospect.email }}</td>
+                                    <td>{{ prospect.phone }}</td>
+                                    <td><a href="{{ path('form_edit', {'id': prospect.id}) }}" class="btn btn-primary actionButton mt-3 mb-3"><i class="fas fa-user-edit"></i></a></td>
+                                    <td><form method="post" action="{{ path('admin_prospect_delete', {'id': prospect.id}) }}" onsubmit="return confirm('Êtes vous sur de vouloir supprimer ce client ?');">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ prospect.id) }}">
+                                            <button class="btn btn-danger actionButton mt-3 mb-3"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+                <div class="row justify-content-center">
+                    {{ knp_pagination_render(prospects) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
