@@ -39,31 +39,31 @@ class Consumption
     private $home;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\StillWaterBottle", mappedBy="consumption")
+     * @ORM\OneToMany(targetEntity="App\Entity\StillWaterBottle", mappedBy="consumption", cascade={"persist"})
      * @Assert\NotBlank(message="Champs requis")
      */
     private $stillWaterBottle;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\SparkWaterBottle", mappedBy="consumption")
+     * @ORM\OneToMany(targetEntity="App\Entity\SparkWaterBottle", mappedBy="consumption", cascade={"persist"})
      * @Assert\NotBlank(message="Champs requis")
      */
     private $sparkWaterBottle;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\WaterHeater", mappedBy="consumption", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\WaterHeater", mappedBy="consumption", cascade={"persist"})
      * @Assert\NotBlank(message="Champs requis")
      */
     private $waterHeater;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Heater", mappedBy="consumption", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Heater", mappedBy="consumption", orphanRemoval=true, cascade={"persist"})
      * @Assert\NotBlank(message="Champs requis")
      */
     private $heater;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\HomeAppliance", mappedBy="consumption", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\HomeAppliance", mappedBy="consumption", cascade={"persist"})
      * @Assert\NotBlank(message="Champs requis")
      */
     private $homeAppliance;
@@ -188,6 +188,12 @@ class Consumption
         return $this->waterHeater;
     }
 
+    public function setWaterHeater(WaterHeater $waterHeater): self
+    {
+        $this->waterHeater = $waterHeater;
+        return $this;
+    }
+
     public function addWaterHeater(WaterHeater $waterHeater): self
     {
         if (!$this->waterHeater->contains($waterHeater)) {
@@ -271,5 +277,12 @@ class Consumption
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        foreach ($this->waterHeater as $item) {
+            return $item;
+        }
     }
 }

@@ -1,60 +1,23 @@
 {% extends 'Front/layout.html.twig' %}
 
 {% block body %}
-    <section class="container justify-content-center">
-        {{ form_start(form,
-            {'attr': {'class':'col-8 flex-column form-inline justify-content-center'}}) }}
+    {{ form_start(form) }}
+        {{ form_widget(form.waterConsumption) }}
+        {{ form_row(form.stillWater) }}
+        {{ form_widget(form.stillWaterBottle.vars.prototype.literPerWeek) }}
+        {{ form_widget(form.stillWaterBottle.vars.prototype.waterBrand) }}
+        {{ form_row(form.sparkWater) }}
+        {{ form_widget(form.home) }}
+        {{ form_widget(form.sparkWaterBottle.vars.prototype.literPerWeek) }}
+        {{ form_widget(form.sparkWaterBottle.vars.prototype.waterBrand) }}
+        {{ form_widget(form.waterHeater.vars.prototype.number) }}
+        {{ form_widget(form.waterHeater.vars.prototype.type) }}
+        {{ form_widget(form.heater.vars.prototype.number) }}
+        {{ form_widget(form.heater.vars.prototype.type) }}
+        {{ form_widget(form.homeAppliance.vars.prototype.number) }}
+        {{ form_widget(form.homeAppliance.vars.prototype.type) }}
+        <input type="submit" value="Submit">
+    {{ form_end(form) }}
 
-        <div class="fields row justify-content-center">
-            <{{ element|default('div') }} class="form-group row col-2">
-            {{- form_label(form.waterConsumption, null,
-                {'label_attr': {'class':'col-6'}}) -}}
-            {{- form_widget(form.waterConsumption,
-                {'attr': {'novalidate':'novalidate', 'placeholder':'L./an', 'class':'col-6'}}) -}}
-            </{{ element|default('div') }}>
-
-            {%- if compound is defined and compound -%}
-                {%- set element = 'fieldset col-3 form-group row' -%}
-            {%- endif -%}
-            <{{ element|default('div') }} class="form-group row col-3">
-            {{- form_label(form.stillWaterBottle, null,
-                {'label_attr': {'class':'col-1'}}) -}}
-            {{- form_widget(form.stillWaterBottle,
-                {'attr': {'novalidate':'novalidate', 'class':'form-control'}}) -}}
-            </{{ element|default('div') }}>
-
-{#            <{{ element|default('div') }} class="form-group row col-3">#}
-{#            {{- form_label(form.sparkWaterBottle, null,#}
-{#                {'label_attr': {'class':'col-1'}}) -}}#}
-{#            {{- form_widget(form.sparkWaterBottle,#}
-{#                {'attr': {'novalidate':'novalidate', 'class':'form-control'}}) -}}#}
-{#            </{{ element|default('div') }}>#}
-        </div>
-
-
-{#        <div class="js col" data-prototype="#}{# form_widget(form.home.vars.prototype)|e('html_attr') #}{#">#}
-{#            {% for row in form.home %}#}
-{#                {{ form_row(row,#}
-{#                    {'attr': {'novalidate':'novalidate', 'placeholder':'Nb', 'class':'col-8 form-control'}}) }}#}
-{#                {{ form_label(row, null,#}
-{#                    {'label_attr': {'class':'col-1'}}) }}#}
-{#            {% endfor %}#}
-{#        </div>#}
-        {#        <div class="js" data-prototype="#}{# form_widget(form.home.vars.prototype)|e('html_attr') #}{#">#}
-        {#            {% for row in form.waterHeater %}#}
-        {#                {{ form_row(row) }}#}
-        {#            {% endfor %}#}
-        {#        </div>#}
-{#        <div class="col">#}
-{#            {{ form_row(form.waterHeater,#}
-{#                {'attr': {'novalidate':'novalidate', 'placeholder':'Nb', 'class':'col-2 form-control'}}) }}#}
-{#            {{ form_row(form.heater,#}
-{#                {'attr': {'novalidate':'novalidate', 'placeholder':'Nb', 'class':'col-2 form-control'}}) }}#}
-{#            {{ form_row(form.homeAppliance,#}
-{#                {'attr': {'novalidate':'novalidate', 'placeholder':'Nb', 'class':'col-2 form-control'}}) }}#}
-{#        </div>#}
-        {#    <input type="submit" value="Submit">#}
-        {{ form_end(form) }}
-    </section>
 
 {% endblock %}
