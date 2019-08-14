@@ -281,8 +281,6 @@ class Consumption
 
     public function __toString()
     {
-        foreach ($this->waterHeater as $item) {
-            return $item;
-        }
+        return $this->waterConsumption;
     }
 }

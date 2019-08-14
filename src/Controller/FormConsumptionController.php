@@ -24,21 +24,20 @@ class FormConsumptionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($consumption);
             $waterHeater = $consumption->getWaterHeater();
-            $waterHeater['__name___']->setConsumption($consumption);
+            $waterHeater['__name__']->setConsumption($consumption);
 
             $stillWaterBottle = $consumption->getStillWaterBottle();
-            $stillWaterBottle['__name___']->setConsumption($consumption);
+            $stillWaterBottle['__name__']->setConsumption($consumption);
 
             $sparkWaterBottle = $consumption->getSparkWaterBottle();
-            $sparkWaterBottle['__name___']->setConsumption($consumption);
+            $sparkWaterBottle['__name__']->setConsumption($consumption);
 
             $heater = $consumption->getHeater();
-            $heater['__name___']->setConsumption($consumption);
+            $heater['__name__']->setConsumption($consumption);
 
             $homeAppliance = $consumption->getHomeAppliance();
-            $homeAppliance['__name___']->setConsumption($consumption);
+            $homeAppliance['__name__']->setConsumption($consumption);
 
             $entityManager = $this->getDoctrine()->getManager();
             $prospect = $prospectRepository->findOneByLastInsert();
@@ -46,7 +45,7 @@ class FormConsumptionController extends AbstractController
             $entityManager->persist($consumption);
             $entityManager->flush();
             $this->addFlash('success','Étape 3/4 terminée');
-//            return $this->redirectToRoute('form_user');
+            return $this->redirectToRoute('form');
         }
         return $this->render('Front/form-consumption-section.html.twig', [
             'form' => $form->createView(),
