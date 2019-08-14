@@ -30,6 +30,7 @@ Encore
     .addStyleEntry('userAdmin', './assets/scss/userAdmin.scss')
     .addStyleEntry('navbarAdmin', './assets/scss/adminNavbar.scss')
     .addStyleEntry('login', './assets/scss/login.scss')
+    .addStyleEntry('bilanPollution','./assets/scss/bilanPollution.scss')
     .addStyleEntry('listProspect', './assets/scss/adminProspectList.scss')
     .addStyleEntry('form', './assets/scss/form.scss')
     .addStyleEntry('adminHomepage', './assets/scss/adminHomepage.scss')
