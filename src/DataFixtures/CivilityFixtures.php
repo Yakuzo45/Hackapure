@@ -9,18 +9,19 @@ use Doctrine\Common\Persistence\ObjectManager;
 class CivilityFixtures extends Fixture
 {
     const CIVILITIES = [
-        'Mme.' => 'Madame',
-        'M.' => 'Monsieur',
-        'Autre' => 'Autre'
+        ['Mme', 'Madame'],
+        ['M.' ,'Monsieur'],
+        ['Autre', 'Autre']
     ];
 
     public function load(ObjectManager $manager)
     {
-        foreach (self::CIVILITIES as $civilityShortName => $civilityName) {
+        foreach (self::CIVILITIES as $key =>$civilityType) {
             $civility = new Civility();
-            $civility->setName($civilityName);
-            $civility->setShortName($civilityShortName);
+            $civility->setName($civilityType[1]);
+            $civility->setShortName($civilityType[0]);
             $manager->persist($civility);
+            $this->addReference('civility_' . $key, $civility);
 
         }
         $manager->flush();
