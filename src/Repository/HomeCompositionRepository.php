@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Home;
+use App\Entity\HomeComposition;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Home|null find($id, $lockMode = null, $lockVersion = null)
- * @method Home|null findOneBy(array $criteria, array $orderBy = null)
- * @method Home[]    findAll()
- * @method Home[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method HomeComposition|null find($id, $lockMode = null, $lockVersion = null)
+ * @method HomeComposition|null findOneBy(array $criteria, array $orderBy = null)
+ * @method HomeComposition[]    findAll()
+ * @method HomeComposition[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class HomeRepository extends ServiceEntityRepository
+class HomeCompositionRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Home::class);
+        parent::__construct($registry, HomeComposition::class);
     }
 
     // /**
-    //  * @return Home[] Returns an array of Home objects
+    //  * @return HomeComposition[] Returns an array of HomeComposition objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class HomeRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Home
+    public function findOneBySomeField($value): ?HomeComposition
     {
         return $this->createQueryBuilder('h')
             ->andWhere('h.exampleField = :val')

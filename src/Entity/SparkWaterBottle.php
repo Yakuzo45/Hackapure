@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SparkWaterBottleRepository")
@@ -18,35 +17,28 @@ class SparkWaterBottle
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Champs requis")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $litrePerWeek;
+    private $LPerWeek;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Champs requis")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $waterBrand;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Consumption", inversedBy="sparkWaterBottle")
-     */
-    private $consumption;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLitrePerWeek(): ?int
+    public function getLPerWeek(): ?int
     {
-        return $this->litrePerWeek;
+        return $this->LPerWeek;
     }
 
-    public function setLitrePerWeek(int $litrePerWeek): self
+    public function setLPerWeek(?int $LPerWeek): self
     {
-        $this->litrePerWeek = $litrePerWeek;
+        $this->LPerWeek = $LPerWeek;
 
         return $this;
     }
@@ -56,21 +48,9 @@ class SparkWaterBottle
         return $this->waterBrand;
     }
 
-    public function setWaterBrand(string $waterBrand): self
+    public function setWaterBrand(?string $waterBrand): self
     {
         $this->waterBrand = $waterBrand;
-
-        return $this;
-    }
-
-    public function getConsumption(): ?Consumption
-    {
-        return $this->consumption;
-    }
-
-    public function setConsumption(?Consumption $consumption): self
-    {
-        $this->consumption = $consumption;
 
         return $this;
     }
