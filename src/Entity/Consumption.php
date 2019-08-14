@@ -57,7 +57,7 @@ class Consumption
     private $waterHeater;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Heater", mappedBy="consumption", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Heater", mappedBy="consumption", cascade={"persist"})
      * @Assert\NotBlank(message="Champs requis")
      */
     private $heater;
