@@ -280,6 +280,6 @@ class Consumption
 
     public function __toString()
     {
-        return (string) $this->waterConsumption;
+        return $this->waterConsumption;
     }
 }
