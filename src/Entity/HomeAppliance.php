@@ -10,6 +10,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class HomeAppliance
 {
+    const HOMEAPPLIANCE_TYPES = [
+        'Lave-linge' => 'washing machine',
+        'Lave-vaisselle' => 'dishwasher',
+        'Four(s) à Vapeur' => 'steam oven',
+        'Cafetière(s)' => 'coffee maker',
+        'Cult-Vapeur' => 'cult-steam',
+        'Chauffe-bibéron' => 'bottle warmer'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

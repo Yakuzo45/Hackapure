@@ -10,6 +10,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class SparkWaterBottle
 {
+    const BRANDSPARKWATER = [
+        'St. Yorre' => 'yorre',
+        'Perrier' => 'perrier',
+        'Badoit' => 'badoit',
+        'San Pellegrino' => 'pellegrino'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
