@@ -2,23 +2,22 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Bath;
+use App\Entity\Material;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
 
-class BathFixtures extends Fixture
+class MaterialFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create('fr_FR');
 
         for ($i = 0; $i < 10; $i++) {
-            $bath = new Bath();
-            $bath->setNumber($faker->randomDigit);
-            $bath->setType($faker->randomDigit);
-            $manager->persist($bath);
-            $this->addReference('bath_' .$i, $bath);
+            $material = new Material();
+            $material->setMaterials($faker->word);
+            $manager->persist($material);
+            $this->addReference('material_' .$i, $material);
         }
         $manager->flush();
     }
