@@ -24,6 +24,22 @@ class FormConsumptionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            dd($consumption);
+            $waterHeater = $consumption->getWaterHeater();
+            $waterHeater['__name___']->setConsumption($consumption);
+
+            $stillWaterBottle = $consumption->getStillWaterBottle();
+            $stillWaterBottle['__name___']->setConsumption($consumption);
+
+            $sparkWaterBottle = $consumption->getSparkWaterBottle();
+            $sparkWaterBottle['__name___']->setConsumption($consumption);
+
+            $heater = $consumption->getHeater();
+            $heater['__name___']->setConsumption($consumption);
+
+            $homeAppliance = $consumption->getHomeAppliance();
+            $homeAppliance['__name___']->setConsumption($consumption);
+
             $entityManager = $this->getDoctrine()->getManager();
             $prospect = $prospectRepository->findOneByLastInsert();
             $consumption->setUser($prospect);

@@ -15,7 +15,8 @@ class ConsumptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('waterConsumption', IntegerType::class, ['label' => 'Litre/an'])
+            ->add('waterConsumption', IntegerType::class, [
+                'label' => 'Litre/an'])
             ->add('stillWater', ChoiceType::class, [
                 'label' => 'Eau Plate', 'mapped' => false, 'choices' => ['Oui' => 'yes', 'Non' => 'no']])
             ->add('stillWaterBottle', CollectionType::class, [
@@ -24,7 +25,8 @@ class ConsumptionType extends AbstractType
                 'label' => 'Eau Pétillante', 'mapped' => false, 'choices' => ['Oui' => 'yes', 'Non' => 'no']])
             ->add('sparkWaterBottle', CollectionType::class, [
                 'label' => false, 'entry_type' => SparkWaterBottleType::class, 'allow_add' => true])
-            ->add('home', HomeType::class, ['label' => false])
+            ->add('home', HomeType::class, [
+                'label' => false])
             ->add('waterHeater', CollectionType::class, [
                 'label' => false, 'entry_type' => WaterHeaterType::class, 'allow_add' => true])
             ->add('heater', CollectionType::class, [
