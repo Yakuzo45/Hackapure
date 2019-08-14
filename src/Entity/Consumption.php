@@ -275,14 +275,11 @@ class Consumption
                 $homeAppliance->setConsumption(null);
             }
         }
-
         return $this;
     }
 
     public function __toString()
     {
-        foreach ($this->waterHeater as $item) {
-            return $item;
-        }
+        return (string) $this->waterConsumption;
     }
 }
