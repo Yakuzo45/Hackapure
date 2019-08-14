@@ -34,13 +34,17 @@ class InstallFormType extends AbstractType
         ]);
 
         $builder->add('sink', CollectionType::class, [
+            'label' => "Lavabo",
             'entry_type' => SinkType::class,
             'allow_add' => true,
         ]);
 
-        $builder->add('bath', BathType::class, []);
+        $builder->add('bath', BathType::class, [
+            'label' => "Baignoire",
+        ]);
 
         $builder->add('shower', CollectionType::class, [
+            'label' => "Douche",
             'entry_type' => ShowerType::class,
             'allow_add' => true,
         ]);
