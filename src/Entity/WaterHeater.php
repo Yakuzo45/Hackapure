@@ -10,6 +10,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class WaterHeater
 {
+    const WATERHEATER_TYPES = [
+        'Électrique' => 'electric',
+        'Thermo-dynamique' => 'thermodynamic',
+        'Intégré' => 'integrated'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
