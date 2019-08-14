@@ -20,8 +20,13 @@
 
             <div id="collapseOne" class="collapse show p-3 border rounded" aria-labelledby="headingOne"
                  data-parent="#accordionExample">
-                {{ render(controller(
-                    'App\\Controller\\FormProspectController::new')) }}
+                {% if prospect is defined %}
+                    {{ render(controller(
+                        'App\\Controller\\FormProspectController::edit', {'id': prospect.id})) }}
+                {% else %}
+                    {{ render(controller(
+                        'App\\Controller\\FormProspectController::new')) }}
+                {% endif %}
             </div>
 
             <!-- collapse two-->
