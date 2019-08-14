@@ -60,7 +60,8 @@
 
             <div id="collapseThree" class="collapse hide" aria-labelledby="headingThree"
                  data-parent="#accordionExample">
-                controller new consumation
+                {{ render(controller(
+                    'App\\Controller\\FormConsumptionController::new')) }}
             </div>
 
             <!-- collapse four-->
