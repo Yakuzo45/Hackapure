@@ -19,13 +19,13 @@ class Diameter
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $diameters;
+    private $diameter;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Material", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Material", inversedBy="diameters")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $materials;
+    private $material;
 
 
     public function getId(): ?int
@@ -33,26 +33,26 @@ class Diameter
         return $this->id;
     }
 
-    public function getDiameters(): ?string
+    public function getDiameter(): ?string
     {
-        return $this->diameters;
+        return $this->diameter;
     }
 
-    public function setDiameters(string $diameters): self
+    public function setDiameter(string $diameter): self
     {
-        $this->diameters = $diameters;
+        $this->diameter = $diameter;
 
         return $this;
     }
 
-    public function getMaterials(): ?Material
+    public function getMaterial(): ?Material
     {
-        return $this->materials;
+        return $this->material;
     }
 
-    public function setMaterials(Material $materials): self
+    public function setMaterial(?Material $material): self
     {
-        $this->materials = $materials;
+        $this->material = $material;
 
         return $this;
     }

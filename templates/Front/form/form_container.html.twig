@@ -42,7 +42,8 @@
 
             <div id="collapseTwo" class="collapse hide p-3 border rounded" aria-labelledby="headingTwo"
                  data-parent="#accordionExample">
-                controller new install
+                {{ render(controller(
+                    'App\\Controller\\FormInstallController::new')) }}
             </div>
 
 
