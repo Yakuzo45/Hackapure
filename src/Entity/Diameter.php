@@ -22,10 +22,11 @@ class Diameter
     private $diameters;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Material", inversedBy="diameter", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Material", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $materials;
+
 
     public function getId(): ?int
     {

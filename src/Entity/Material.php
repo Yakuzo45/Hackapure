@@ -21,11 +21,6 @@ class Material
      */
     private $materials;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Diameter", mappedBy="materials", cascade={"persist", "remove"})
-     */
-    private $diameter;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -39,23 +34,6 @@ class Material
     public function setMaterials(string $materials): self
     {
         $this->materials = $materials;
-
-        return $this;
-    }
-
-    public function getDiameter(): ?Diameter
-    {
-        return $this->diameter;
-    }
-
-    public function setDiameter(Diameter $diameter): self
-    {
-        $this->diameter = $diameter;
-
-        // set the owning side of the relation if necessary
-        if ($this !== $diameter->getMaterials()) {
-            $diameter->setMaterials($this);
-        }
 
         return $this;
     }

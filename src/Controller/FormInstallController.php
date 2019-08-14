@@ -19,7 +19,7 @@ class FormInstallController extends AbstractController
         $install = new Install();
         $form = $this->createForm(InstallFormType::class, $install);
         $form->handleRequest($request);
-
+dd($form->getData());
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($install);

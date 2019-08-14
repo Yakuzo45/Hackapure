@@ -25,7 +25,8 @@ class InstallFormType extends AbstractType
         $builder
             ->add(
                 $builder->create('aftermeter', FormType::class, [
-                    'by_reference' => AfterMeter::class,
+//                    'class' => AfterMeter::class,
+                    'by_reference' => false,
                     'label' => false,
                 ])
                     ->add('material', EntityType::class, [
@@ -57,6 +58,7 @@ class InstallFormType extends AbstractType
                     ])
                     ->add('accuracy', TextareaType::class, [
                         'label' => 'Précision',
+                        'required' => false
                     ])
 //                    ->add('picture', VichImageType::class, [
 //                        'label' => 'Photo',
@@ -95,6 +97,7 @@ class InstallFormType extends AbstractType
                     ])
                     ->add('accuracy', TextareaType::class, [
                         'label' => 'Précision',
+                        'required' => false
                     ])
 //                    ->add('picture', VichImageType::class, [
 //                        'label' => 'Photo',
