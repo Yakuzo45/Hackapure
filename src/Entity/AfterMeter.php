@@ -9,35 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AfterMeter
 {
-    const MATERIALS_AFTERMETERS = [
-        'Cuivre',
-        'Galva',
-        'Multicouche',
-        'PolyEthylène',
-        'PolyEthylène Réticulé',
-        'PVC Pression'
-    ];
-
-    const DIAMERTER_AFTERMETER = [
-        'ø12',
-        'ø14',
-        'ø16',
-        'ø18',
-        'ø20',
-        'ø22',
-        'ø25',
-        'ø28',
-        'ø32',
-        'ø40',
-        'ø50',
-        '1/2"',
-        '3/4"',
-        '1"',
-        '1" 1/4',
-        '1" 1/2',
-    ];
-
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

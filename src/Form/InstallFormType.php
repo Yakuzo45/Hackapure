@@ -3,8 +3,11 @@
 namespace App\Form;
 
 use App\Entity\AfterMeter;
+use App\Entity\Diameter;
 use App\Entity\Install;
+use App\Entity\Material;
 use App\Entity\UnderSink;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -19,25 +22,21 @@ class InstallFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $aftermeterMaterials = array_flip(AfterMeter::MATERIALS_AFTERMETERS);
-        $aftermeterDiameters = array_flip(AfterMeter::DIAMERTER_AFTERMETER);
-        $undersinkMaterials = array_flip(UnderSink::MATERIALS_UNDERSINK);
-        $undersinkDiameters = array_flip(UnderSink::DIAMETER_UNDERSINK);
-
-
         $builder
             ->add(
                 $builder->create('aftermeter', FormType::class, [
                     'by_reference' => AfterMeter::class,
                     'label' => false,
                 ])
-                    ->add('material', ChoiceType::class, [
-                        'choices' => $aftermeterMaterials,
+                    ->add('material', EntityType::class, [
+                        'class' => Material::class,
+                        'choice_label' => 'materials',
                         'label' => 'Matériel',
                     ])
-                    ->add('diameter', ChoiceType::class, [
+                    ->add('diameter', EntityType::class, [
+                        'class' => Diameter::class,
                         'label' => 'Diamètre',
-                        'choices' => $aftermeterDiameters
+                        'choice_label' => 'diameters'
                     ])
                     ->add('screwthread', ChoiceType::class, [
                         'choices' => [
@@ -70,13 +69,15 @@ class InstallFormType extends AbstractType
                     'by_reference' => UnderSink::class,
                     'label' => false
                 ])
-                    ->add('material', ChoiceType::class, [
-                        'choices' => $undersinkMaterials,
+                    ->add('material', EntityType::class, [
+                        'class' => Material::class,
+                        'choice_label' => 'materials',
                         'label' => 'Matériel',
                     ])
-                    ->add('diameter', ChoiceType::class, [
+                    ->add('diameter', EntityType::class, [
+                        'class' => Diameter::class,
                         'label' => 'Diamètre',
-                        'choices' => $undersinkDiameters,
+                        'choice_label' => 'diameters',
                     ])
                     ->add('screwthread', ChoiceType::class, [
                         'choices' => [
