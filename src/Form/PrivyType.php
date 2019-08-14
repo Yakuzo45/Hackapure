@@ -16,6 +16,7 @@ class PrivyType extends AbstractType
     {
         $builder->add('number', IntegerType::class);
         $builder->add('type', ChoiceType::class, [
+            'label'=> "WC",
             'choices' => [
                 'WC normal' => "1",
                 'WC suspendu' => "2",
