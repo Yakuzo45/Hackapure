@@ -18,7 +18,7 @@ class ShowerType extends AbstractType
         $builder->add('number', IntegerType::class)
                 ->add('type', ChoiceType::class, [
             'choices' => [
-                'DOuche normal' => "1",
+                'Douche normal' => "1",
                 'Douche suspendu' => "2",
             ]
         ]);
