@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Pollution;
 use App\Form\PollutionType;
+use App\Repository\PollutionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +31,7 @@ class FormPollutionController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'étape 4/4 terminée');
-            return $this->redirectToRoute('pollution');
+            return $this->redirectToRoute('pollution_bilan');
         }
         return $this->render('Front/form/form_pollution.html.twig', [
             'form' => $form->createView(),
@@ -39,10 +40,11 @@ class FormPollutionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="pollution_bilan", methods={"GET"})
+     * @Route("/bilan", name="pollution_bilan", methods={"GET"})
      */
-    public function show(Pollution $pollution): Response
+    public function show(PollutionRepository $pollutionRepository): Response
     {
+        $pollution =$pollutionRepository->findOneByLastInsert();
         return $this->render('Front/pollution/bilan.html.twig', [
             'pollution' => $pollution,
         ]);

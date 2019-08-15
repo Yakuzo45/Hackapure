@@ -16,7 +16,7 @@ class FormInstallController extends AbstractController
     /**
      * @Route("/form/install", name="form_install", methods={"GET", "POST"})
      */
-    public function new(Request $request, ProspectRepository $prospectRepository) : Response
+    public function createInstall(Request $request, ProspectRepository $prospectRepository) : Response
     {
         $install = new Install();
         $form = $this->createForm(InstallFormType::class, $install);
@@ -35,7 +35,7 @@ class FormInstallController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->render('Front/form_install/index.html.twig', [
+        return $this->render('Front/form/form_install.html.twig', [
             'form' => $form->createView(),
         ]);
     }

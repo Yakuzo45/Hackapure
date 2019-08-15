@@ -72,7 +72,7 @@ class Pollution
         return $this->idProspect;
     }
 
-    public function setIdProspect(int $idProspect): self
+    public function setIdProspect(Prospect $idProspect): self
     {
         $this->idProspect = $idProspect;
 

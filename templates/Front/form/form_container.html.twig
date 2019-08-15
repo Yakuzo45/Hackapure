@@ -43,7 +43,7 @@
             <div id="collapseTwo" class="collapse hide p-3 border rounded" aria-labelledby="headingTwo"
                  data-parent="#accordionExample">
                 {{ render(controller(
-                    'App\\Controller\\FormInstallController::new')) }}
+                    'App\\Controller\\FormInstallController::createInstall')) }}
             </div>
 
 
@@ -90,5 +90,6 @@
     {{ parent() }}
     {{ encore_entry_script_tags('submitFormProspect') }}
     {{ encore_entry_script_tags('submitFormPollution') }}
+    {{ encore_entry_script_tags('submitFormInstall') }}
 
 {% endblock %}

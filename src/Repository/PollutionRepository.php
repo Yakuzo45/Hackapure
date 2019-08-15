@@ -47,4 +47,14 @@ class PollutionRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findOneByLastInsert(): ?Pollution
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 }

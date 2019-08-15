@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\AfterMeter;
+use App\Entity\Install;
 use App\Entity\Pollution;
 use App\Entity\Prospect;
+use App\Form\InstallFormType;
 use App\Form\PollutionType;
 use App\Form\ProspectType;
 use App\Repository\ProspectRepository;
@@ -55,13 +58,12 @@ class AjaxFormAppraisalController extends AbstractController
 
         $form = $this->createForm(
             PollutionType::class,
-            $pollution,
-            [
-                'action' => $this->generateUrl($request->get('_route'))]
-        )->handleRequest($request);
+            $pollution);
+        $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                $pollution->setIdProspect($prospectRepository->findOneByLastInsert()->getId());
+                $pollution->setIdProspect($prospectRepository->findOneByLastInsert());
+
                 $this->getDoctrine()->getManager()->persist($pollution);
                 $this->getDoctrine()->getManager()->flush();
                 return new Response('successPollution');
@@ -73,4 +75,54 @@ class AjaxFormAppraisalController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/createInstall", name="install")
+     */
+    public function createInstall(Request $request, ProspectRepository $prospectRepository): Response
+    {
+        $install = new Install();
+        $form = $this->createForm(InstallFormType::class, $install);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $sink = $install->getSink();
+                $shower = $install->getShower();
+                $privy = $install->getPrivy();
+                $sink['__name__']->setInstall($install);
+                $shower['__name__']->setInstall($install);
+                $privy['__name__']->setInstall($install);
+                $prospect = $prospectRepository->findOneByLastInsert();
+                $install->setProspect($prospect);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($install);
+                $entityManager->flush();
+                return new Response('successInstall');
+            } else {
+                return new Response('errorInstall');
+            }
+        }
+
+        return $this->render('Front/form/form_install.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    public function setAfterMeter($data)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $newAfterMeter = new AfterMeter();
+        $newAfterMeter->setAccuracy($data->getAccuracy());
+        $newAfterMeter->setDiameter($data->getDiameter());
+        $newAfterMeter->setMaterial($data->getMaterial());
+        $newAfterMeter->setScrewthread($data->getScrewthread());
+        $newAfterMeter->setThread($data->getThread());
+
+        $em->persist($newAfterMeter);
+        $em->flush();
+
+        return $newAfterMeter;
+    }
+
 }
