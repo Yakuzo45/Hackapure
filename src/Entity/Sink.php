@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SinkRepository")
@@ -18,7 +17,6 @@ class Sink
     private $id;
 
     /**
-     * @Assert\NotBlank
      * @ORM\Column(type="integer")
      */
     private $number;
