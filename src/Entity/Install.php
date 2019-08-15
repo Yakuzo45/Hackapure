@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InstallRepository")
@@ -32,14 +31,12 @@ class Install
     private $bath;
 
     /**
-     * @Assert\NotBlank
      * @ORM\OneToMany(targetEntity="App\Entity\Sink", mappedBy="id_install", cascade={"persist"})
      */
     private $sink;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Shower", mappedBy="id_install", cascade={"persist"})
-     * @Assert\NotBlank
      */
     private $shower;
 
