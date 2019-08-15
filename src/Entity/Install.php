@@ -32,14 +32,12 @@ class Install
     private $bath;
 
     /**
-     * @Assert\NotBlank
      * @ORM\OneToMany(targetEntity="App\Entity\Sink", mappedBy="id_install", cascade={"persist"})
      */
     private $sink;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Shower", mappedBy="id_install", cascade={"persist"})
-     * @Assert\NotBlank
      */
     private $shower;
 
