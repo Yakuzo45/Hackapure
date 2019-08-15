@@ -19,6 +19,16 @@ class PollutionRepository extends ServiceEntityRepository
         parent::__construct($registry, Pollution::class);
     }
 
+    public function findOneByLastInsert(): ?Pollution
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
     // /**
     //  * @return Pollution[] Returns an array of Pollution objects
     //  */

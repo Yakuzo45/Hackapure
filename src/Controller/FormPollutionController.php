@@ -4,19 +4,18 @@ namespace App\Controller;
 
 use App\Entity\Pollution;
 use App\Form\PollutionType;
+use App\Repository\PollutionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/pollution")
- */
+
 class FormPollutionController extends AbstractController
 {
 
     /**
-     * @Route("/", name="pollution", methods={"GET"})
+     * @Route("/pollution", name="pollution", methods={"GET"})
      */
     public function new(Request $request): Response
     {
@@ -30,19 +29,19 @@ class FormPollutionController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'étape 4/4 terminée');
-            return $this->redirectToRoute('pollution');
+            return $this->redirectToRoute('pollution_bilan');
         }
         return $this->render('Front/form/form_pollution.html.twig', [
             'form' => $form->createView(),
         ]);
-
     }
 
     /**
-     * @Route("/{id}", name="pollution_bilan", methods={"GET"})
+     * @Route("/bilan", name="pollution_bilan", methods={"GET"})
      */
-    public function show(Pollution $pollution): Response
+    public function show(PollutionRepository $pollutionRepository): Response
     {
+        $pollution = $pollutionRepository->findOneByLastInsert();
         return $this->render('Front/pollution/bilan.html.twig', [
             'pollution' => $pollution,
         ]);
@@ -73,7 +72,7 @@ class FormPollutionController extends AbstractController
      */
     public function delete(Request $request, Pollution $pollution): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$pollution->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $pollution->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($pollution);
             $entityManager->flush();
