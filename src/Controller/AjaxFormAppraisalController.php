@@ -65,11 +65,15 @@ class AjaxFormAppraisalController extends AbstractController
     public function createPollution(Request $request, ProspectRepository $prospectRepository)
     {
         $pollution = new Pollution();
+        try {
+            $form = $this->createForm(
+                PollutionType::class,
+                $pollution)
+                ->handleRequest($request);
+        } catch (Exception $e) {
+            return new Response('errorPollution');
+        }
 
-        $form = $this->createForm(
-            PollutionType::class,
-            $pollution)
-            ->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $pollution->setIdProspect($prospectRepository->findOneByLastInsert()->getId());
