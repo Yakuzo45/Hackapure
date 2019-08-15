@@ -12,6 +12,7 @@ use App\Form\InstallFormType;
 use App\Form\PollutionType;
 use App\Form\ProspectType;
 use App\Repository\ProspectRepository;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +39,13 @@ class AjaxFormAppraisalController extends AbstractController
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $this->getDoctrine()->getManager()->persist($prospect);
-                $this->getDoctrine()->getManager()->flush();
+
+                try {
+                    $this->getDoctrine()->getManager()->flush();
+                } catch (Exception $e) {
+                    return new Response('errorProspect');
+                }
+
                 return new Response('successProspect');
             } else {
                 return new Response('errorProspect');
@@ -67,7 +74,11 @@ class AjaxFormAppraisalController extends AbstractController
             if ($form->isValid()) {
                 $pollution->setIdProspect($prospectRepository->findOneByLastInsert()->getId());
                 $this->getDoctrine()->getManager()->persist($pollution);
-                $this->getDoctrine()->getManager()->flush();
+                try {
+                    $this->getDoctrine()->getManager()->flush();
+                } catch (Exception $e) {
+                    return new Response('errorPollution');
+                }
                 return new Response('successPollution');
             } else {
                 return new Response('errorPollution');
@@ -99,7 +110,11 @@ class AjaxFormAppraisalController extends AbstractController
                 $install->setProspect($prospect);
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($install);
-                $entityManager->flush();
+                try {
+                    $entityManager->flush();
+                } catch (Exception $e) {
+                    return new Response('errorInstall');
+                }
                 return new Response('successInstall');
             } else {
                 return new Response('errorInstall');
@@ -142,7 +157,11 @@ class AjaxFormAppraisalController extends AbstractController
                 $prospect = $prospectRepository->findOneByLastInsert();
                 $consumption->setUser($prospect);
                 $entityManager->persist($consumption);
-                $entityManager->flush();
+                try {
+                    $entityManager->flush();
+                } catch (Exception $e) {
+                    return new Response('errorConsumption');
+                }
 
                 return new Response('successConsumption');
             } else {
@@ -168,7 +187,11 @@ class AjaxFormAppraisalController extends AbstractController
         $newAfterMeter->setThread($data->getThread());
 
         $em->persist($newAfterMeter);
-        $em->flush();
+        try {
+            $em->flush();
+        } catch (Exception $e) {
+            return new Response('errorInstall');
+        }
 
         return $newAfterMeter;
     }
