@@ -1,7 +1,7 @@
 {% extends 'Front/layout.html.twig' %}
 
 {% block body %}
-    {{ form_start(form) }}
+    {{ form_start(form,{'attr': {'id': 'formConsumption'}}) }}
         {{ form_widget(form.waterConsumption) }}
         {{ form_row(form.stillWater) }}
         {{ form_widget(form.stillWaterBottle.vars.prototype.literPerWeek) }}
@@ -16,6 +16,7 @@
         {{ form_widget(form.heater.vars.prototype.type) }}
         {{ form_widget(form.homeAppliance.vars.prototype.number) }}
         {{ form_widget(form.homeAppliance.vars.prototype.type) }}
+    <div id="errorsThree" class="alert alert-danger d-none"> Votre formulaire contient des erreurs.</div>
         <input type="submit" value="Submit">
     {{ form_end(form) }}
 

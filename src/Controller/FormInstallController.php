@@ -22,6 +22,7 @@ class FormInstallController extends AbstractController
         $form = $this->createForm(InstallFormType::class, $install);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            dd($form);
             $sink = $install->getSink();
             $shower = $install->getShower();
             $privy = $install->getPrivy();
@@ -35,7 +36,7 @@ class FormInstallController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->render('Front/form_install/index.html.twig', [
+        return $this->render('Front/form/form_install.html.twig', [
             'form' => $form->createView(),
         ]);
     }
