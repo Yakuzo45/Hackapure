@@ -22,7 +22,6 @@ class FormInstallController extends AbstractController
         $form = $this->createForm(InstallFormType::class, $install);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($form);
             $sink = $install->getSink();
             $shower = $install->getShower();
             $privy = $install->getPrivy();
