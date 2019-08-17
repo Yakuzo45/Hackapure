@@ -52,7 +52,7 @@ class Prelevment
 
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="date", length=255, nullable=true)
      */
     private $dateprel;
 
@@ -177,12 +177,12 @@ class Prelevment
         return $this;
     }
 
-    public function getDateprel(): ?string
+    public function getDateprel(): ?\dateTime
     {
         return $this->dateprel;
     }
 
-    public function setDateprel(?string $dateprel): self
+    public function setDateprel(?\dateTime $dateprel): self
     {
         $this->dateprel = $dateprel;
 
@@ -309,12 +309,12 @@ class Prelevment
         return $this;
     }
 
-    public function getReferenceprel(): ?Prelevment
+    public function getReferenceprel(): ?string
     {
         return $this->referenceprel;
     }
 
-    public function setReferenceprel(?Prelevment $referenceprel): self
+    public function setReferenceprel(?string $referenceprel): self
     {
         $this->referenceprel = $referenceprel;
 

@@ -14,7 +14,7 @@ $(document).on('submit', '#formPollution', function (e) {
         data: $(this).serialize(),
         success: function (data) {
             if (data === 'successPollution') {
-                document.location.href="bilan"
+                document.location.href="findresults"
             }
             if (data === 'errorPollution') {
                 headingOne.classList.remove("bg-success", "bg-primary", "bg-danger");
