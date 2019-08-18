@@ -31,8 +31,6 @@ class ResultController extends AbstractController
     ): Response {
         $lat = $prospectRepository->findOneByLastInsert()->getLat();
         $lng = $prospectRepository->findOneByLastInsert()->getLng();
-//        $lat = 46.4667;
-//        $lng = 3.2667;
         $inseeNumber = $inseeNumberFinder->findInseeNumber($lat, $lng);
         $extractionPoints = $cityRepository->findByInseNumber($inseeNumber);
 
@@ -42,7 +40,7 @@ class ResultController extends AbstractController
                 ['extractionPoints' => $extractionPoints]
             );
         } else {
-            $cdreseau=$extractionPoints[0]->getCdreseau();
+            $cdreseau = $extractionPoints[0]->getCdreseau();
             return $this->redirectToRoute('show_analyzes', ['cdreseau' => $cdreseau]);
         }
     }
@@ -50,33 +48,32 @@ class ResultController extends AbstractController
     /**
      * @Route("/resultats/{cdreseau}", name="show_analyzes", methods={"GET"})
      * @param PollutionRepository $pollutionRepository
-     * @param ProspectRepository $prospectRepository
-     * @param InseeNumberFinder $inseeNumberFinder
-     * @param CityRepository $cityRepository
+     * @param City $city
+     * @param PrelevmentRepository $prelevmentRepository
+     * @param ResultRepository $resultRepository
      * @return Response
      */
     public function show(
         PollutionRepository $pollutionRepository,
         City $city,
-    PrelevmentRepository $prelevmentRepository,
-    ResultRepository $resultRepository
-    ): Response
-    {
+        PrelevmentRepository $prelevmentRepository,
+        ResultRepository $resultRepository
+    ): Response {
 
-        $prelevment=$prelevmentRepository->findBy(
-            ['cdreseau'=>$city->getCdreseau()],
-            ['dateprel'=>'desc'],
-            ['limit'=>1]
+        $prelevment = $prelevmentRepository->findBy(
+            ['cdreseau' => $city->getCdreseau()],
+            ['dateprel' => 'desc'],
+            ['limit' => 1]
         );
-        $results=$resultRepository->findBy(['referenceprel'=>$prelevment[0]->getReferenceprel()]);
+        $results = $resultRepository->findBy(['referenceprel' => $prelevment[0]->getReferenceprel()]);
 
 
         $pollution = $pollutionRepository->findOneByLastInsert();
         return $this->render('Front/bilan/analyses_bilan.html.twig', [
             'pollution' => $pollution,
-            'results'=>$results,
-            'city'=>ucfirst(strtolower($city->getName())),
-            'prelevment'=>$prelevment[0]
+            'results' => $results,
+            'city' => ucfirst(strtolower($city->getName())),
+            'prelevment' => $prelevment[0]
         ]);
     }
 }
