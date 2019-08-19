@@ -9,7 +9,5 @@ if (searchAdress !== null) {
         document.querySelector('#prospect_city').value = e.suggestion.city;
         document.querySelector('#prospect_zipCode').value = e.suggestion.postcode;
         document.querySelector('#prospect_street').value = e.suggestion.name;
-        document.querySelector('#prospect_lat').value = e.suggestion.latlng.lat;
-        document.querySelector('#prospect_lng').value = e.suggestion.latlng.lng;
     })
 }
