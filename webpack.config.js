@@ -27,6 +27,8 @@ Encore
     .addEntry('searchAddress', './assets/js/searchAddressAutocompletion.js')
     .addEntry('submitFormProspect', './assets/js/submitProspectForm.js')
     .addEntry('submitFormPollution', './assets/js/submitPollutionForm.js')
+    .addEntry('submitFormInstall', './assets/js/submitInstallForm.js')
+    .addEntry('submitFormConsumption', './assets/js/submitConsumptionForm.js')
     .addStyleEntry('userAdmin', './assets/scss/userAdmin.scss')
     .addStyleEntry('navbarAdmin', './assets/scss/adminNavbar.scss')
     .addStyleEntry('login', './assets/scss/login.scss')

@@ -2,35 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Pollution;
+use App\Entity\Prelevment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Pollution|null find($id, $lockMode = null, $lockVersion = null)
- * @method Pollution|null findOneBy(array $criteria, array $orderBy = null)
- * @method Pollution[]    findAll()
- * @method Pollution[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Prelevment|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Prelevment|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Prelevment[]    findAll()
+ * @method Prelevment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PollutionRepository extends ServiceEntityRepository
+class PrelevmentRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Pollution::class);
-    }
-
-    public function findOneByLastInsert(): ?Pollution
-    {
-        return $this->createQueryBuilder('p')
-            ->orderBy('p.id', 'DESC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getOneOrNullResult()
-            ;
+        parent::__construct($registry, Prelevment::class);
     }
 
     // /**
-    //  * @return Pollution[] Returns an array of Pollution objects
+    //  * @return Prelevment[] Returns an array of Prelevment objects
     //  */
     /*
     public function findByExampleField($value)
@@ -47,7 +37,7 @@ class PollutionRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Pollution
+    public function findOneBySomeField($value): ?Prelevment
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

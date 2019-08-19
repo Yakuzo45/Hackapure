@@ -99,6 +99,16 @@ class Prospect
      */
     private $city;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lat;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lng;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -208,6 +218,30 @@ class Prospect
     public function setCivility(?Civility $civility): self
     {
         $this->civility = $civility;
+
+        return $this;
+    }
+
+    public function getLat(): ?string
+    {
+        return $this->lat;
+    }
+
+    public function setLat(?string $lat): self
+    {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    public function getLng(): ?string
+    {
+        return $this->lng;
+    }
+
+    public function setLng(?string $lng): self
+    {
+        $this->lng = $lng;
 
         return $this;
     }

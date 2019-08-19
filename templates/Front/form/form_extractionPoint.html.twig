@@ -1,0 +1,11 @@
+{% extends 'Front/layout.html.twig' %}
+{% block title %}
+    Choisir un point d'extraction
+{% endblock %}
+{% block body %}
+    <h2>Il y a plusieurs points d'extraction d'eau à {{ extractionPoints.0.name }}</h2>
+    <p>N.B. en cas de doute, votre source est indiquée sur votre facture d'eau.</p>
+    {% for point in extractionPoints %}
+        <h3><a href="{{ path('show_analyzes',{'cdreseau':point.cdreseau}) }}"> {{ point.installationName }}</a></h3>
+    {% endfor %}
+{% endblock %}
