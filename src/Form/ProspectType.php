@@ -33,9 +33,7 @@ class ProspectType extends AbstractType
             ->add('fullAddress')
             ->add('street', HiddenType::class)
             ->add('zipCode', HiddenType::class)
-            ->add('city', HiddenType::class)
-            ->add('lat', HiddenType::class)
-            ->add('lng', HiddenType::class);
+            ->add('city', HiddenType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
