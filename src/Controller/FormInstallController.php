@@ -35,7 +35,7 @@ class FormInstallController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->render('Front/form_install/index.html.twig', [
+        return $this->render('Front/form/form_install.html.twig', [
             'form' => $form->createView(),
         ]);
     }

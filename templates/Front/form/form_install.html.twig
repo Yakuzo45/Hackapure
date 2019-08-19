@@ -1,11 +1,5 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Hello FormInstallController!{% endblock %}
-
-{% block body %}
-<div class = container>
-
-    {{ form_start(form) }}
+    {{ form_start(form,{'attr': {'id': 'formInstall'}}) }}
 
     <h2 class ="mt-4 mb-4">Après compteur</h2>
 
@@ -127,11 +121,8 @@
 
     <div class="text-center m-4 pt-2">
         <div id="errorsTwo" class="alert alert-danger d-none"> Votre formulaire contient des erreurs.</div>
-        <button class="btn btn-primary m-2 w-25">{{ button_label|default('Valider') }}</button>
+        <button id="submitFormInstall" class="btn btn-primary m-2 w-25">{{ button_label|default('Valider') }}</button>
     </div>
 
     {{ form_end(form) }}
 
-</div>
-
-{% endblock %}

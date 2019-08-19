@@ -44,10 +44,9 @@ class FormConsumptionController extends AbstractController
             $consumption->setUser($prospect);
             $entityManager->persist($consumption);
             $entityManager->flush();
-            $this->addFlash('success','Étape 3/4 terminée');
             return $this->redirectToRoute('form');
         }
-        return $this->render('Front/form-consumption-section.html.twig', [
+        return $this->render('Front/form/form_consumption.html.twig', [
             'form' => $form->createView(),
         ]);
     }
