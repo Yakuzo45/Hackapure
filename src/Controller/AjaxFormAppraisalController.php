@@ -178,8 +178,7 @@ class AjaxFormAppraisalController extends AbstractController
     }
 
 
-    public
-    function setAfterMeter($data)
+    public function setAfterMeter($data)
     {
         $em = $this->getDoctrine()->getManager();
 
